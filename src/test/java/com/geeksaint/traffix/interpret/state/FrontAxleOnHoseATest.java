@@ -1,6 +1,10 @@
-package com.geeksaint.traffix.interpret;
+package com.geeksaint.traffix.interpret.state;
 
 import com.geeksaint.traffix.Reading;
+import com.geeksaint.traffix.interpret.InterpreterState;
+import com.geeksaint.traffix.interpret.state.FrontAxleOnHoseA;
+import com.geeksaint.traffix.interpret.state.FrontAxleOnHoseB;
+import com.geeksaint.traffix.interpret.state.LaneAVehicleFoundState;
 import org.junit.Before;
 import org.junit.Test;
 

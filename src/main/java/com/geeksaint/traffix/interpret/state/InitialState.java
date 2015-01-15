@@ -1,9 +1,10 @@
-package com.geeksaint.traffix.interpret;
+package com.geeksaint.traffix.interpret.state;
 
 import com.geeksaint.traffix.Reading;
 import com.geeksaint.traffix.VehicleData;
+import com.geeksaint.traffix.interpret.InterpreterState;
 
-import static com.geeksaint.traffix.interpret.UnexpectedReadingException.*;
+import static com.geeksaint.traffix.interpret.state.UnexpectedReadingException.*;
 
 public class InitialState implements InterpreterState {
 

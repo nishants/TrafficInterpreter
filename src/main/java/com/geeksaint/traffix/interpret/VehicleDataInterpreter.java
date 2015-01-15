@@ -1,6 +1,7 @@
 package com.geeksaint.traffix.interpret;
 
 import com.geeksaint.traffix.VehicleData;
+import com.geeksaint.traffix.interpret.state.InitialState;
 import com.geeksaint.traffix.source.DataSource;
 
 import java.util.Iterator;

@@ -1,7 +1,8 @@
-package com.geeksaint.traffix.interpret;
+package com.geeksaint.traffix.interpret.state;
 
 import com.geeksaint.traffix.Reading;
 import com.geeksaint.traffix.VehicleData;
+import com.geeksaint.traffix.interpret.InterpreterState;
 import lombok.EqualsAndHashCode;
 
 //Represents the state of the interpreter after it has found the readingOfFirstAxle for the first axle of a vehicle crossing the hose A

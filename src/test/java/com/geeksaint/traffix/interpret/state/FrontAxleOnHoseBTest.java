@@ -1,6 +1,10 @@
-package com.geeksaint.traffix.interpret;
+package com.geeksaint.traffix.interpret.state;
 
 import com.geeksaint.traffix.Reading;
+import com.geeksaint.traffix.interpret.InterpreterState;
+import com.geeksaint.traffix.interpret.state.BackAxleOnHoseA;
+import com.geeksaint.traffix.interpret.state.FrontAxleOnHoseB;
+import com.geeksaint.traffix.interpret.state.UnexpectedReadingException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;

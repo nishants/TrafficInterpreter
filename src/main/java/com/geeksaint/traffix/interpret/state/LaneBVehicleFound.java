@@ -1,10 +1,11 @@
-package com.geeksaint.traffix.interpret;
+package com.geeksaint.traffix.interpret.state;
 
 import com.geeksaint.traffix.Reading;
 import com.geeksaint.traffix.VehicleData;
+import com.geeksaint.traffix.interpret.InterpreterState;
 import lombok.EqualsAndHashCode;
 
-import static com.geeksaint.traffix.interpret.UnexpectedReadingException.*;
+import static com.geeksaint.traffix.interpret.state.UnexpectedReadingException.*;
 import static java.util.Arrays.asList;
 
 //Back axle of a vehicle crossed the hose B

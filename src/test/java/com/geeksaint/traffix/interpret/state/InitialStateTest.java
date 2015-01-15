@@ -1,12 +1,16 @@
-package com.geeksaint.traffix.interpret;
+package com.geeksaint.traffix.interpret.state;
 
 import com.geeksaint.traffix.Reading;
+import com.geeksaint.traffix.interpret.InterpreterState;
+import com.geeksaint.traffix.interpret.state.FrontAxleOnHoseA;
+import com.geeksaint.traffix.interpret.state.InitialState;
+import com.geeksaint.traffix.interpret.state.UnexpectedReadingException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static com.geeksaint.traffix.interpret.InitialState.create;
+import static com.geeksaint.traffix.interpret.state.InitialState.create;
 import static com.geeksaint.traffix.maker.ReadingMaker.hoseAReading;
 import static com.geeksaint.traffix.maker.ReadingMaker.hoseBReading;
 import static org.hamcrest.CoreMatchers.is;
