@@ -26,14 +26,6 @@ public class DateSupport {
   }
 
 
-  public static Date increment(Date date) {
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTimeInMillis(date.getTime());
-    calendar.add(Calendar.DAY_OF_MONTH, 1);
-    return calendar.getTime();
-  }
-
-
   public static Date addDaysTo(Date day, int days) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(day.getTime());
@@ -60,16 +52,6 @@ public class DateSupport {
     calendar.setTime(date);
     SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyy");
     return dateFormat.format(date);
-  }
-
-
-  public static long addDate(Date date, long timeStampToMillis) {
-    return new Date(date.getTime() + timeStampToMillis).getTime();
-  }
-
-  public static long timeStampToMillis(String timeStampInHHMM) {
-    long minutes = toMinutes(timeStampInHHMM);
-    return minutes * 60 * 1000;
   }
 
   //Converts time into minutes since 00:00

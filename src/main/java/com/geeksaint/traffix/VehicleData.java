@@ -24,13 +24,13 @@ public class VehicleData {
     this.lane = lane;
   }
 
-  public int getTimeOfDayInSeconds(){
-    return DateSupport.timeOfDayInSeconds(timeAtHoseA);
-  }
-
   public static VehicleData record(List<Reading> readings) {
     Date timeAtHoseA = frontAxleHoseATime(readings);
     return new VehicleData(timeAtHoseA, laneOf(readings));
+  }
+
+  public boolean isEntering() {
+    return lane == LANE_A;
   }
 
   private static Lane laneOf(List<Reading> readings) {
@@ -39,13 +39,5 @@ public class VehicleData {
 
   private static Date frontAxleHoseATime(List<Reading> readings) {
     return readings.get(0).getTime();
-  }
-
-  public Date getTime() {
-    return timeAtHoseA;
-  }
-
-  public boolean isLaneA() {
-    return lane == LANE_A;
   }
 }

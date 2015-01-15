@@ -7,7 +7,8 @@ import static com.geeksaint.traffix.interpret.UnexpectedReadingException.*;
 
 public class InitialState implements InterpreterState {
 
-  private InitialState(){}
+  private InitialState() {
+  }
 
   @Override
   public InterpreterState input(Reading reading) {

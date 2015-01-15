@@ -8,7 +8,7 @@ import static com.geeksaint.traffix.interpret.UnexpectedReadingException.*;
 
 //Front Axle of a lane B vehicle crosses hose B
 @EqualsAndHashCode
-public class FrontAxleOnHoseB implements InterpreterState{
+public class FrontAxleOnHoseB implements InterpreterState {
   private final Reading frontAxleHoseAReading;
   private final Reading frontAxleHoseBReading;
 

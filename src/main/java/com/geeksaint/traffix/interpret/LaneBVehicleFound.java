@@ -9,7 +9,7 @@ import static java.util.Arrays.asList;
 
 //Back axle of a vehicle crossed the hose B
 @EqualsAndHashCode
-public class LaneBVehicleFound implements InterpreterState{
+public class LaneBVehicleFound implements InterpreterState {
   private final Reading frontAxleHoseAReading;
   private final Reading frontAxleHoseBReading;
   private final Reading backAxleHoseAReading;

@@ -43,7 +43,7 @@ public class FileDataSource implements DataSource {
 
   private Date currentDateOf(String token) {
     long time = parseLong(token.substring(1));
-    if (lastRecordingTime > time){
+    if (lastRecordingTime > time) {
       currentDayOfRecording = addDaysTo(currentDayOfRecording, 1);
     }
     lastRecordingTime = time;

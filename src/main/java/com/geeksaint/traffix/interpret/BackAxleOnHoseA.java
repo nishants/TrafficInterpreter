@@ -8,7 +8,7 @@ import static com.geeksaint.traffix.interpret.UnexpectedReadingException.*;
 
 @EqualsAndHashCode
 //Back axle crosses the hose A
-public class BackAxleOnHoseA implements InterpreterState{
+public class BackAxleOnHoseA implements InterpreterState {
   private Reading frontAxleHoseAReading;
   private Reading frontAxleHoseBReading;
   private Reading backAxleHoseAReading;
