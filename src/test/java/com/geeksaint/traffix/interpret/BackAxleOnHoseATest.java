@@ -6,8 +6,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static com.geeksaint.traffix.Lane.LANE_A;
-import static com.geeksaint.traffix.Lane.LANE_B;
+import static com.geeksaint.traffix.Lane.ENTRY;
+import static com.geeksaint.traffix.Lane.EXIT;
 import static com.geeksaint.traffix.maker.ReadingMaker.Reading;
 import static com.geeksaint.traffix.maker.ReadingMaker.hoseAReading;
 import static com.geeksaint.traffix.maker.ReadingMaker.hoseBReading;
@@ -32,9 +32,9 @@ public class BackAxleOnHoseATest {
 
   @Before
   public void setup(){
-    frontAxleHoseAReading = make(a(Reading, with(lane, LANE_A)));
-    frontAxleHoseBReading = make(a(Reading, with(lane, LANE_B)));
-    backAxleHoseAReading = make(a(Reading, with(lane, LANE_A)));
+    frontAxleHoseAReading = make(a(Reading, with(lane, ENTRY)));
+    frontAxleHoseBReading = make(a(Reading, with(lane, EXIT)));
+    backAxleHoseAReading = make(a(Reading, with(lane, ENTRY)));
 
     state = BackAxleOnHoseA.withReadings(frontAxleHoseAReading, frontAxleHoseBReading, backAxleHoseAReading);
   }

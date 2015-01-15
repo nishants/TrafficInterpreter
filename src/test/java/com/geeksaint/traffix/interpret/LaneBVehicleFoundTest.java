@@ -7,8 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static com.geeksaint.traffix.Lane.LANE_A;
-import static com.geeksaint.traffix.Lane.LANE_B;
+import static com.geeksaint.traffix.Lane.ENTRY;
+import static com.geeksaint.traffix.Lane.EXIT;
 import static com.geeksaint.traffix.maker.ReadingMaker.Reading;
 import static com.geeksaint.traffix.maker.ReadingMaker.hoseBReading;
 import static com.geeksaint.traffix.maker.ReadingMaker.lane;
@@ -31,10 +31,10 @@ public class LaneBVehicleFoundTest {
 
   @Before
   public void setup() {
-    frontAxleHoseAReading = make(a(Reading, with(lane, LANE_A)));
-    frontAxleHoseBReading = make(a(Reading, with(lane, LANE_B)));
-    backAxleHoseAReading = make(a(Reading, with(lane, LANE_A)));
-    backAxleHoseBReading = make(a(Reading, with(lane, LANE_B)));
+    frontAxleHoseAReading = make(a(Reading, with(lane, ENTRY)));
+    frontAxleHoseBReading = make(a(Reading, with(lane, EXIT)));
+    backAxleHoseAReading = make(a(Reading, with(lane, ENTRY)));
+    backAxleHoseBReading = make(a(Reading, with(lane, EXIT)));
 
     state = LaneBVehicleFound.withReadings(
         frontAxleHoseAReading,
@@ -52,7 +52,7 @@ public class LaneBVehicleFoundTest {
 
   @Test
   public void nextStateShouldBeFrontAxleOnHoseA(){
-    Reading nextReading = make(a(Reading, with(lane, LANE_A)));
+    Reading nextReading = make(a(Reading, with(lane, ENTRY)));
 
     InterpreterState expected = FrontAxleOnHoseA.with(nextReading);
     assertThat(state.input(nextReading), is(expected));

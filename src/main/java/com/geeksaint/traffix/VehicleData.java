@@ -1,6 +1,5 @@
 package com.geeksaint.traffix;
 
-import com.geeksaint.traffix.util.DateSupport;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -17,11 +16,11 @@ public class VehicleData {
   private final Date timeAtHoseA;
 
   @Getter
-  private final Lane lane;
+  private final boolean isEntering;
 
   public VehicleData(Date timeAtHoseA, Lane lane) {
     this.timeAtHoseA = timeAtHoseA;
-    this.lane = lane;
+    this.isEntering = (lane == ENTRY);
   }
 
   public static VehicleData record(List<Reading> readings) {
@@ -29,12 +28,8 @@ public class VehicleData {
     return new VehicleData(timeAtHoseA, laneOf(readings));
   }
 
-  public boolean isEntering() {
-    return lane == LANE_A;
-  }
-
   private static Lane laneOf(List<Reading> readings) {
-    return readings.size() == 2 ? LANE_A : LANE_B;
+    return readings.size() == 2 ? ENTRY : EXIT;
   }
 
   private static Date frontAxleHoseATime(List<Reading> readings) {

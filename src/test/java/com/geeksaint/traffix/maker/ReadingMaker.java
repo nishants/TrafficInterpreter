@@ -20,7 +20,7 @@ public class ReadingMaker {
   public static final Instantiator<Reading> Reading = new Instantiator<Reading>() {
     public Reading instantiate(PropertyLookup<Reading> lookup) {
       Date recordedAt = lookup.valueOf(time, new Date(0l));
-      Lane goingNorth = lookup.valueOf(lane, LANE_A);
+      Lane goingNorth = lookup.valueOf(lane, ENTRY);
       return com.geeksaint.traffix.Reading.of(recordedAt, goingNorth);
     }
   };
@@ -34,7 +34,7 @@ public class ReadingMaker {
   }
 
   public static Reading hoseAReading = make(a(Reading));
-  public static Reading hoseBReading = make(a(Reading, with(lane, LANE_B)));
+  public static Reading hoseBReading = make(a(Reading, with(lane, EXIT)));
 }
 
 

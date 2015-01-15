@@ -14,10 +14,10 @@ public class ReadingTest {
 
   @Test
   public void shouldMakeAReading() {
-    Reading pointAReading = of(new Date(0l), LANE_A);
+    Reading pointAReading = of(new Date(0l), ENTRY);
     assertThat(pointAReading.isHoseA(), is(true));
 
-    Reading pointBReading = of(new Date(0l), LANE_B);
+    Reading pointBReading = of(new Date(0l), EXIT);
     assertThat(pointBReading.isHoseA(), is(false));
   }
 }

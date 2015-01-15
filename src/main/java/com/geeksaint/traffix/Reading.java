@@ -26,6 +26,6 @@ public class Reading {
   }
 
   public boolean isHoseA() {
-    return lane.equals(LANE_A);
+    return lane.equals(ENTRY);
   }
 }

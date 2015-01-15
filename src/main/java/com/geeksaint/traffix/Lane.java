@@ -1,8 +1,8 @@
 package com.geeksaint.traffix;
 
 public enum Lane {
-  LANE_A("A"),
-  LANE_B("B");
+  ENTRY("A"),
+  EXIT("B");
 
   private String readingPrefix;
 

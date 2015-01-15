@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.geeksaint.traffix.Lane.LANE_A;
+import static com.geeksaint.traffix.Lane.ENTRY;
 import static com.geeksaint.traffix.maker.ReadingMaker.makeReading;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
@@ -19,10 +19,10 @@ public class VehicleDataInterpreterTest {
   @Test
   public void takesReadingsFromSourceAndReturnsVehicle() {
     List<Reading> readingList = asList(
-        makeReading((new Date()), 268581l, LANE_A),
-        makeReading((new Date()), 268681l, LANE_A),
-        makeReading((new Date()), 268781l, LANE_A),
-        makeReading((new Date()), 268581l, LANE_A)
+        makeReading((new Date()), 268581l, ENTRY),
+        makeReading((new Date()), 268681l, ENTRY),
+        makeReading((new Date()), 268781l, ENTRY),
+        makeReading((new Date()), 268581l, ENTRY)
     );
     DataSource dataSource = mockedFor(readingList);
 

@@ -17,34 +17,34 @@ public class VehicleDataTest {
   @Test
   public void shouldSetSpeedForLaneAVehicles() {
     Reading frontAxleHoseAReading = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, LANE_A),
+        with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(1000l))));
 
     Reading backAxleHoseAReading = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, LANE_A),
+        with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(2000l))));
 
     VehicleData vehicleData = VehicleData.record(asList(frontAxleHoseAReading, backAxleHoseAReading));
 
-    assertThat(vehicleData.getLane(), is(LANE_A));
+    assertThat(vehicleData.isEntering(), is(true));
     assertThat(vehicleData.isEntering(), is(true));
   }
 
   @Test
   public void shouldSetSpeedForLaneBVehicles() {
     Reading frontAxleHoseAReading = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, LANE_A),
+        with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(1000l))));
     Reading frontAxleHoseBReading = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, LANE_A),
+        with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(1003l))));
 
     Reading backAxleHoseAReading = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, LANE_A),
+        with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(2005l))));
 
     Reading backAxleHoseBReading = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, LANE_A),
+        with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(2013l))));
 
     VehicleData vehicleData = VehicleData.record(asList(
@@ -54,7 +54,7 @@ public class VehicleDataTest {
         backAxleHoseBReading
     ));
 
-    assertThat(vehicleData.getLane(), is(LANE_B));
+    assertThat(vehicleData.isEntering(), is(false));
     assertThat(vehicleData.isEntering(), is(false));
   }
 

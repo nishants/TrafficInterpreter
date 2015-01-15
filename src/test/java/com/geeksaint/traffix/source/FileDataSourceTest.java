@@ -9,8 +9,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.geeksaint.traffix.Lane.LANE_A;
-import static com.geeksaint.traffix.Lane.LANE_B;
+import static com.geeksaint.traffix.Lane.ENTRY;
+import static com.geeksaint.traffix.Lane.EXIT;
 import static com.geeksaint.traffix.maker.ReadingMaker.makeReading;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
@@ -27,23 +27,23 @@ public class FileDataSourceTest {
 
         Date recordingDate = toDate(1970, 1, 1);
         List<Reading> expectedList = asList(
-                makeReading(recordingDate, 268981l, LANE_A),
-                makeReading(recordingDate, 269123l, LANE_A),
+                makeReading(recordingDate, 268981l, ENTRY),
+                makeReading(recordingDate, 269123l, ENTRY),
 
-                makeReading(recordingDate, 604957l, LANE_A),
-                makeReading(recordingDate, 604960l, LANE_B),
+                makeReading(recordingDate, 604957l, ENTRY),
+                makeReading(recordingDate, 604960l, EXIT),
 
-                makeReading(recordingDate, 605128l, LANE_A),
-                makeReading(recordingDate, 605132l, LANE_B),
+                makeReading(recordingDate, 605128l, ENTRY),
+                makeReading(recordingDate, 605132l, EXIT),
 
-                makeReading(recordingDate, 1089807l, LANE_A),
-                makeReading(recordingDate, 1089810l, LANE_B),
+                makeReading(recordingDate, 1089807l, ENTRY),
+                makeReading(recordingDate, 1089810l, EXIT),
 
-                makeReading(recordingDate, 1089948l, LANE_A),
-                makeReading(recordingDate, 1089951l, LANE_B),
+                makeReading(recordingDate, 1089948l, ENTRY),
+                makeReading(recordingDate, 1089951l, EXIT),
 
-                makeReading(increment(recordingDate), 100, LANE_A),
-                makeReading(increment(increment(recordingDate)), 20, LANE_A)
+                makeReading(increment(recordingDate), 100, ENTRY),
+                makeReading(increment(increment(recordingDate)), 20, ENTRY)
         );
 
         assertThat(readList, is(expectedList));

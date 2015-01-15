@@ -8,10 +8,7 @@ import com.natpryce.makeiteasy.PropertyLookup;
 
 import java.util.Date;
 
-import static com.natpryce.makeiteasy.MakeItEasy.a;
-import static com.natpryce.makeiteasy.MakeItEasy.make;
 import static com.natpryce.makeiteasy.MakeItEasy.with;
-import static java.util.Arrays.asList;
 
 public class VehicleDataMaker {
   public static final Property<VehicleData, Long> time = new Property<VehicleData, Long>();
@@ -19,7 +16,7 @@ public class VehicleDataMaker {
 
   public static final Instantiator<VehicleData> VehicleData = new Instantiator<VehicleData>() {
     public VehicleData instantiate(PropertyLookup<VehicleData> lookup) {
-      return new VehicleData(new Date(lookup.valueOf(time, 0l)), lookup.valueOf(lane, Lane.LANE_A) );
+      return new VehicleData(new Date(lookup.valueOf(time, 0l)), lookup.valueOf(lane, Lane.ENTRY) );
     }
   };
 }

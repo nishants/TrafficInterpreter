@@ -25,8 +25,8 @@ public class FrontAxleOnHoseBTest {
 
   @Before
   public void setup() {
-    frontAxleHoseAReading = make(a(Reading, with(lane, LANE_A)));
-    frontAxleHoseBReading = make(a(Reading, with(lane, LANE_B)));
+    frontAxleHoseAReading = make(a(Reading, with(lane, ENTRY)));
+    frontAxleHoseBReading = make(a(Reading, with(lane, EXIT)));
     state = FrontAxleOnHoseB.withReadings(frontAxleHoseAReading, frontAxleHoseBReading);
   }
 
