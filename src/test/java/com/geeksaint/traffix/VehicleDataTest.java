@@ -30,7 +30,6 @@ public class VehicleDataTest {
 
     VehicleData vehicleData = VehicleData.record(asList(frontAxleHoseAReading, backAxleHoseAReading));
 
-    assertThat(vehicleData.getSpeed(), is(2.5f));
     assertThat(vehicleData.getLane(), is(LANE_A));
     assertThat(vehicleData.isLaneA(), is(true));
     assertThat(vehicleData.getTime(), is(frontAxleHoseAReading.getTime()));
@@ -60,7 +59,6 @@ public class VehicleDataTest {
         backAxleHoseBReading
     ));
 
-    assertThat(vehicleData.getSpeed(), is(2.4814048f));
     assertThat(vehicleData.getLane(), is(LANE_B));
     assertThat(vehicleData.isLaneA(), is(false));
     assertThat(vehicleData.getTime(), is(frontAxleHoseAReading.getTime()));

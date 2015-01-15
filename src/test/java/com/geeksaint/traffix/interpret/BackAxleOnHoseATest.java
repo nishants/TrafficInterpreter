@@ -23,7 +23,7 @@ import static org.junit.Assert.assertThat;
 public class BackAxleOnHoseATest {
 
   private InterpreterState state;
-  private com.geeksaint.traffix.Reading frontAxleHoseAReading;
+  private Reading frontAxleHoseAReading;
   private Reading frontAxleHoseBReading;
   private Reading backAxleHoseAReading;
   @Rule

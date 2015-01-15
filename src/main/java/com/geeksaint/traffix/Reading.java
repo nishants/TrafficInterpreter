@@ -16,7 +16,7 @@ public class Reading {
   private final Date time;
   private final Lane lane;
 
-  protected Reading(Date time, Lane lane) {
+  public Reading(Date time, Lane lane) {
     this.time = time;
     this.lane = lane;
   }

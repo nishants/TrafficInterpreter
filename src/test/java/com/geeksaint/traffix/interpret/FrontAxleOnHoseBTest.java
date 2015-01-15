@@ -18,7 +18,7 @@ import static org.junit.Assert.assertThat;
 public class FrontAxleOnHoseBTest {
 
   private InterpreterState state;
-  private com.geeksaint.traffix.Reading frontAxleHoseAReading;
+  private Reading frontAxleHoseAReading;
   private Reading frontAxleHoseBReading;
   @Rule
   public ExpectedException expectedException = ExpectedException.none();

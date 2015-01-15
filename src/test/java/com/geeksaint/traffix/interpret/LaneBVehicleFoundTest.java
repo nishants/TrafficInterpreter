@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThat;
 
 public class LaneBVehicleFoundTest {
   private InterpreterState state;
-  private com.geeksaint.traffix.Reading frontAxleHoseAReading;
+  private Reading frontAxleHoseAReading;
   private Reading frontAxleHoseBReading;
   private Reading backAxleHoseAReading;
   private Reading backAxleHoseBReading;

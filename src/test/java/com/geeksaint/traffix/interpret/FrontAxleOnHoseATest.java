@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 
 public class FrontAxleOnHoseATest {
   private FrontAxleOnHoseA frontAxleOnHoseA;
-  private com.geeksaint.traffix.Reading readingOfFirstAxle;
+  private Reading readingOfFirstAxle;
 
   @Before
   public void setup() {
