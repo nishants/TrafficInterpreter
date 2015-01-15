@@ -29,7 +29,7 @@ public class VehicleDataInterpreterTest {
     VehicleData expectedOne = VehicleData.record(readingList.subList(0, 2));
     VehicleData expectedTwo = VehicleData.record(readingList.subList(2, 4));
 
-    VehicleDataInterpreter interpreter = VehicleDataInterpreter.load(dataSource);
+    VehicleDataInterpreter interpreter = new VehicleDataInterpreter(dataSource);
 
     assertThat(interpreter.hasNext(), is(true));
     assertThat(interpreter.next(), is(expectedOne));

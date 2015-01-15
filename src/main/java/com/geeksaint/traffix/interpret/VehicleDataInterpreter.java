@@ -34,8 +34,4 @@ public class VehicleDataInterpreter implements Iterator<VehicleData> {
   public void remove() {
     throw new UnsupportedOperationException();
   }
-
-  public static VehicleDataInterpreter load(DataSource dataSource) {
-    return new VehicleDataInterpreter(dataSource);
-  }
 }
