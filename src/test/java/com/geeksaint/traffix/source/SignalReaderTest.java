@@ -16,10 +16,10 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class SignalInterpreterTest {
+public class SignalReaderTest {
     @Test
     public void shouldReadFile() {
-        SignalInterpreter dataSource = new SignalInterpreter(1970, 1, 1, fileAsStream("/data/test_data_reader.txt"));
+        SignalReader dataSource = new SignalReader(1970, 1, 1, fileAsStream("/data/test_data_reader.txt"));
         List<Signal> readList = new ArrayList<Signal>();
         while (dataSource.hasNext()) {
             readList.add(dataSource.getNext());
@@ -59,10 +59,6 @@ public class SignalInterpreterTest {
         calendar.set(Calendar.MONTH, month);
         calendar.set(Calendar.DAY_OF_MONTH, day);
         return calendar.getTime();
-    }
-
-    private Date addToDate(Date date, long timeInMillis) {
-        return new Date(date.getTime() + timeInMillis);
     }
 
     private Date increment(Date date) {

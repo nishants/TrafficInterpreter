@@ -11,21 +11,21 @@ import static com.geeksaint.traffix.Lane.*;
 
 @EqualsAndHashCode
 @ToString
-public class VehicleData {
+public class Vehicle {
   @Getter
   private final Date timeObserved;
 
   @Getter
   private final boolean isEntering;
 
-  public VehicleData(Date timeObserved, Lane lane) {
+  public Vehicle(Date timeObserved, Lane lane) {
     this.timeObserved = timeObserved;
     this.isEntering = (lane == ENTRY);
   }
 
-  public static VehicleData parse(List<Signal> signals) {
+  public static Vehicle parse(List<Signal> signals) {
     Date timeObserved = signals.get(0).getTime();
-    return new VehicleData(timeObserved, laneOf(signals));
+    return new Vehicle(timeObserved, laneOf(signals));
   }
 
   private static Lane laneOf(List<Signal> signals) {

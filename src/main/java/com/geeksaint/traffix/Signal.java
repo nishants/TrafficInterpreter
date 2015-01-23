@@ -21,8 +21,8 @@ public class Signal {
     this.lane = lane;
   }
 
-  public static Signal of(Date recordedAt, Lane goingNorth) {
-    return new Signal(recordedAt, goingNorth);
+  public static Signal of(Date recordedAt, Lane lane) {
+    return new Signal(recordedAt, lane);
   }
 
   public boolean isEntryLane() {

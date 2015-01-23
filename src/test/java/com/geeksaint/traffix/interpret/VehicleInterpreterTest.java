@@ -1,8 +1,8 @@
 package com.geeksaint.traffix.interpret;
 
 import com.geeksaint.traffix.Signal;
-import com.geeksaint.traffix.VehicleData;
-import com.geeksaint.traffix.source.SignalInterpreter;
+import com.geeksaint.traffix.Vehicle;
+import com.geeksaint.traffix.source.SignalReader;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class VehicleDataInterpreterTest {
+public class VehicleInterpreterTest {
   @Test
   public void parsesSignalsToVehicleData() {
     List<Signal> signalList = asList(
@@ -33,14 +33,14 @@ public class VehicleDataInterpreterTest {
         makeSignal((new Date()), 268581l, ENTRY),
         makeSignal((new Date()), 268581l, ENTRY)
     );
-    SignalInterpreter signalInterpreter = mockedFor(signalList);
+    SignalReader signalReader = mockedFor(signalList);
 
-    VehicleData expectedOne = VehicleData.parse(signalList.subList(0, 2));
-    VehicleData expectedTwo = VehicleData.parse(signalList.subList(2, 4));
-    VehicleData expectedThree = VehicleData.parse(signalList.subList(4, 8));
-    VehicleData expectedFour = VehicleData.parse(signalList.subList(8, 10));
+    Vehicle expectedOne = Vehicle.parse(signalList.subList(0, 2));
+    Vehicle expectedTwo = Vehicle.parse(signalList.subList(2, 4));
+    Vehicle expectedThree = Vehicle.parse(signalList.subList(4, 8));
+    Vehicle expectedFour = Vehicle.parse(signalList.subList(8, 10));
 
-    VehicleDataInterpreter interpreter = new VehicleDataInterpreter(signalInterpreter);
+    SignalInterpreter interpreter = new SignalInterpreter(signalReader);
 
     assertThat(interpreter.hasNext(), is(true));
     assertThat(interpreter.next(), is(expectedOne));
@@ -49,10 +49,10 @@ public class VehicleDataInterpreterTest {
     assertThat(interpreter.next(), is(expectedFour));
   }
 
-  private SignalInterpreter mockedFor(List<Signal> signalList) {
+  private SignalReader mockedFor(List<Signal> signalList) {
     final Iterator<Signal> iterator = signalList.iterator();
     //A (technically) mocked signal interpreter
-    SignalInterpreter signalInterpreter = new SignalInterpreter(1,1,1, new InputStream() {
+    return new SignalReader(1,1,1, new InputStream() {
       @Override
       public int read() throws IOException {
         return 0;
@@ -67,6 +67,5 @@ public class VehicleDataInterpreterTest {
         return iterator.next();
       }
     };
-    return signalInterpreter;
   }
 }

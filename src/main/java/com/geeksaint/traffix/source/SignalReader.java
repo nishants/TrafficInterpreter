@@ -11,12 +11,12 @@ import static com.geeksaint.traffix.util.DateSupport.addDaysTo;
 import static com.geeksaint.traffix.util.DateSupport.toDateOfYear;
 import static java.lang.Long.*;
 
-public class SignalInterpreter {
+public class SignalReader {
   private final Scanner scanner;
   private Date currentDayOfRecording;
   private long lastRecordingTime;
 
-  public SignalInterpreter(int day, int month, int year, InputStream inputStream) {
+  public SignalReader(int day, int month, int year, InputStream inputStream) {
     currentDayOfRecording = toDateOfYear(day, month, year);
     scanner = new Scanner(inputStream);
   }

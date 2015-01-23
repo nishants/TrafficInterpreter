@@ -13,7 +13,7 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class VehicleDataTest {
+public class VehicleTest {
   @Test
   public void shouldSetSpeedForLaneAVehicles() {
     Signal frontAxleSensorASignal = make(a(SignalMaker.SIGNAL,
@@ -24,10 +24,10 @@ public class VehicleDataTest {
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2000l))));
 
-    VehicleData vehicleData = VehicleData.parse(asList(frontAxleSensorASignal, backAxleSensorASignal));
+    Vehicle vehicle = Vehicle.parse(asList(frontAxleSensorASignal, backAxleSensorASignal));
 
-    assertThat(vehicleData.isEntering(), is(true));
-    assertThat(vehicleData.isEntering(), is(true));
+    assertThat(vehicle.isEntering(), is(true));
+    assertThat(vehicle.isEntering(), is(true));
   }
 
   @Test
@@ -47,15 +47,15 @@ public class VehicleDataTest {
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2013l))));
 
-    VehicleData vehicleData = VehicleData.parse(asList(
+    Vehicle vehicle = Vehicle.parse(asList(
         frontAxleSignalASignal,
         frontAxleSignalBSignal,
         backAxleSignalASignal,
         backAxleSignalBSignal
     ));
 
-    assertThat(vehicleData.isEntering(), is(false));
-    assertThat(vehicleData.isEntering(), is(false));
+    assertThat(vehicle.isEntering(), is(false));
+    assertThat(vehicle.isEntering(), is(false));
   }
 
   private Date toDate(long time) {
