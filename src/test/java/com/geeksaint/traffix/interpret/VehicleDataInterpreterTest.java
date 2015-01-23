@@ -5,6 +5,8 @@ import com.geeksaint.traffix.VehicleData;
 import com.geeksaint.traffix.source.SignalInterpreter;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -33,10 +35,10 @@ public class VehicleDataInterpreterTest {
     );
     SignalInterpreter signalInterpreter = mockedFor(signalList);
 
-    VehicleData expectedOne = VehicleData.record(signalList.subList(0, 2));
-    VehicleData expectedTwo = VehicleData.record(signalList.subList(2, 4));
-    VehicleData expectedThree = VehicleData.record(signalList.subList(4, 8));
-    VehicleData expectedFour = VehicleData.record(signalList.subList(8, 10));
+    VehicleData expectedOne = VehicleData.parse(signalList.subList(0, 2));
+    VehicleData expectedTwo = VehicleData.parse(signalList.subList(2, 4));
+    VehicleData expectedThree = VehicleData.parse(signalList.subList(4, 8));
+    VehicleData expectedFour = VehicleData.parse(signalList.subList(8, 10));
 
     VehicleDataInterpreter interpreter = new VehicleDataInterpreter(signalInterpreter);
 
@@ -50,7 +52,12 @@ public class VehicleDataInterpreterTest {
   private SignalInterpreter mockedFor(List<Signal> signalList) {
     final Iterator<Signal> iterator = signalList.iterator();
     //A (technically) mocked signal interpreter
-    SignalInterpreter signalInterpreter = new SignalInterpreter(1,1,1,null) {
+    SignalInterpreter signalInterpreter = new SignalInterpreter(1,1,1, new InputStream() {
+      @Override
+      public int read() throws IOException {
+        return 0;
+      }
+    }) {
       @Override
       public boolean hasNext() {
         return iterator.hasNext();

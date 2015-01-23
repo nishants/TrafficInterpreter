@@ -13,19 +13,19 @@ import static com.geeksaint.traffix.Lane.*;
 @ToString
 public class VehicleData {
   @Getter
-  private final Date timeAtHoseA;
+  private final Date timeObserved;
 
   @Getter
   private final boolean isEntering;
 
-  public VehicleData(Date timeAtHoseA, Lane lane) {
-    this.timeAtHoseA = timeAtHoseA;
+  public VehicleData(Date timeObserved, Lane lane) {
+    this.timeObserved = timeObserved;
     this.isEntering = (lane == ENTRY);
   }
 
-  public static VehicleData record(List<Signal> signals) {
-    Date timeAtHoseA = signals.get(0).getTime();
-    return new VehicleData(timeAtHoseA, laneOf(signals));
+  public static VehicleData parse(List<Signal> signals) {
+    Date timeObserved = signals.get(0).getTime();
+    return new VehicleData(timeObserved, laneOf(signals));
   }
 
   private static Lane laneOf(List<Signal> signals) {

@@ -29,7 +29,7 @@ public class SignalMaker {
     return make(a(SIGNAL, with(SignalMaker.lane, lane), with(time, addToDate(observedOn, timeInMillis))));
   }
 
-  private static Date addToDate(Date observedOn, long timeInMillis) {
+  public static Date addToDate(Date observedOn, long timeInMillis) {
     return new Date(observedOn.getTime() + timeInMillis);
   }
 }

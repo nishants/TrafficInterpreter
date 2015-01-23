@@ -54,21 +54,6 @@ public class DateSupport {
     return dateFormat.format(date);
   }
 
-  //Converts time into minutes since 00:00
-  public static int toMinutes(String timeStampInMMSS) {
-    int minutes = minuteOf(timeStampInMMSS);
-    minutes += (hourOf(timeStampInMMSS) * 60);
-    return minutes;
-  }
-
-  public static int minuteOf(String timeStampInMMSS) {
-    return parseInt(timeStampInMMSS.substring(2, 4));
-  }
-
-  public static int hourOf(String timeStampInMMSS) {
-    return parseInt(timeStampInMMSS.substring(0, 2));
-  }
-
   public static Date toDateOfYear(Date date) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(date);

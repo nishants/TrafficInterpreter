@@ -26,11 +26,11 @@ public class VehicleDataInterpreter implements Iterator<VehicleData> {
     Signal firstSignal = signalInterpreter.getNext();
     Signal secondSignal = signalInterpreter.getNext();
     if(secondSignal.isEntryLane()){
-      return VehicleData.record(asList(firstSignal, secondSignal));
+      return VehicleData.parse(asList(firstSignal, secondSignal));
     }
     Signal thirdSignal = signalInterpreter.getNext();
     Signal fourthSignal = signalInterpreter.getNext();
-    return VehicleData.record(asList(firstSignal, secondSignal, thirdSignal, fourthSignal));
+    return VehicleData.parse(asList(firstSignal, secondSignal, thirdSignal, fourthSignal));
   }
 
   @Override

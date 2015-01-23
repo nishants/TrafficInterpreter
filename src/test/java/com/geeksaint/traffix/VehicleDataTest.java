@@ -16,15 +16,15 @@ import static org.junit.Assert.assertThat;
 public class VehicleDataTest {
   @Test
   public void shouldSetSpeedForLaneAVehicles() {
-    Signal frontAxleHoseASignal = make(a(SignalMaker.SIGNAL,
+    Signal frontAxleSensorASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(1000l))));
 
-    Signal backAxleHoseASignal = make(a(SignalMaker.SIGNAL,
+    Signal backAxleSensorASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2000l))));
 
-    VehicleData vehicleData = VehicleData.record(asList(frontAxleHoseASignal, backAxleHoseASignal));
+    VehicleData vehicleData = VehicleData.parse(asList(frontAxleSensorASignal, backAxleSensorASignal));
 
     assertThat(vehicleData.isEntering(), is(true));
     assertThat(vehicleData.isEntering(), is(true));
@@ -32,26 +32,26 @@ public class VehicleDataTest {
 
   @Test
   public void shouldSetSpeedForLaneBVehicles() {
-    Signal frontAxleHoseASignal = make(a(SignalMaker.SIGNAL,
+    Signal frontAxleSignalASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(1000l))));
-    Signal frontAxleHoseBSignal = make(a(SignalMaker.SIGNAL,
+    Signal frontAxleSignalBSignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(1003l))));
 
-    Signal backAxleHoseASignal = make(a(SignalMaker.SIGNAL,
+    Signal backAxleSignalASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2005l))));
 
-    Signal backAxleHoseBSignal = make(a(SignalMaker.SIGNAL,
+    Signal backAxleSignalBSignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2013l))));
 
-    VehicleData vehicleData = VehicleData.record(asList(
-        frontAxleHoseASignal,
-        frontAxleHoseBSignal,
-        backAxleHoseASignal,
-        backAxleHoseBSignal
+    VehicleData vehicleData = VehicleData.parse(asList(
+        frontAxleSignalASignal,
+        frontAxleSignalBSignal,
+        backAxleSignalASignal,
+        backAxleSignalBSignal
     ));
 
     assertThat(vehicleData.isEntering(), is(false));
