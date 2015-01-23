@@ -1,6 +1,6 @@
 package com.geeksaint.traffix;
 
-import com.geeksaint.traffix.maker.ReadingMaker;
+import com.geeksaint.traffix.maker.SignalMaker;
 import org.junit.Test;
 
 import java.util.Date;
@@ -16,13 +16,13 @@ import static org.junit.Assert.assertThat;
 public class VehicleDataTest {
   @Test
   public void shouldSetSpeedForLaneAVehicles() {
-    Signal frontAxleHoseASignal = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, ENTRY),
-        with(ReadingMaker.time, toDate(1000l))));
+    Signal frontAxleHoseASignal = make(a(SignalMaker.Reading,
+        with(SignalMaker.lane, ENTRY),
+        with(SignalMaker.time, toDate(1000l))));
 
-    Signal backAxleHoseASignal = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, ENTRY),
-        with(ReadingMaker.time, toDate(2000l))));
+    Signal backAxleHoseASignal = make(a(SignalMaker.Reading,
+        with(SignalMaker.lane, ENTRY),
+        with(SignalMaker.time, toDate(2000l))));
 
     VehicleData vehicleData = VehicleData.record(asList(frontAxleHoseASignal, backAxleHoseASignal));
 
@@ -32,20 +32,20 @@ public class VehicleDataTest {
 
   @Test
   public void shouldSetSpeedForLaneBVehicles() {
-    Signal frontAxleHoseASignal = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, ENTRY),
-        with(ReadingMaker.time, toDate(1000l))));
-    Signal frontAxleHoseBSignal = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, ENTRY),
-        with(ReadingMaker.time, toDate(1003l))));
+    Signal frontAxleHoseASignal = make(a(SignalMaker.Reading,
+        with(SignalMaker.lane, ENTRY),
+        with(SignalMaker.time, toDate(1000l))));
+    Signal frontAxleHoseBSignal = make(a(SignalMaker.Reading,
+        with(SignalMaker.lane, ENTRY),
+        with(SignalMaker.time, toDate(1003l))));
 
-    Signal backAxleHoseASignal = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, ENTRY),
-        with(ReadingMaker.time, toDate(2005l))));
+    Signal backAxleHoseASignal = make(a(SignalMaker.Reading,
+        with(SignalMaker.lane, ENTRY),
+        with(SignalMaker.time, toDate(2005l))));
 
-    Signal backAxleHoseBSignal = make(a(ReadingMaker.Reading,
-        with(ReadingMaker.lane, ENTRY),
-        with(ReadingMaker.time, toDate(2013l))));
+    Signal backAxleHoseBSignal = make(a(SignalMaker.Reading,
+        with(SignalMaker.lane, ENTRY),
+        with(SignalMaker.time, toDate(2013l))));
 
     VehicleData vehicleData = VehicleData.record(asList(
         frontAxleHoseASignal,

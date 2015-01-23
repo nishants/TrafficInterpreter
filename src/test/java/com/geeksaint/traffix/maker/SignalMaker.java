@@ -13,7 +13,7 @@ import static com.natpryce.makeiteasy.MakeItEasy.a;
 import static com.natpryce.makeiteasy.MakeItEasy.make;
 import static com.natpryce.makeiteasy.MakeItEasy.with;
 
-public class ReadingMaker {
+public class SignalMaker {
   public static final Property<Signal, Date> time = new Property<Signal, Date>();
   public static final Property<Signal, Lane> lane = new Property<Signal, Lane>();
 
@@ -26,7 +26,7 @@ public class ReadingMaker {
   };
 
   public static Signal makeReading(Date observedOn, long timeInMillis, Lane lane){
-    return make(a(Reading, with(ReadingMaker.lane, lane), with(time, addToDate(observedOn, timeInMillis))));
+    return make(a(Reading, with(SignalMaker.lane, lane), with(time, addToDate(observedOn, timeInMillis))));
   }
 
   private static Date addToDate(Date observedOn, long timeInMillis) {

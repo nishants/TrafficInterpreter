@@ -11,7 +11,7 @@ import java.util.List;
 
 import static com.geeksaint.traffix.Lane.ENTRY;
 import static com.geeksaint.traffix.Lane.EXIT;
-import static com.geeksaint.traffix.maker.ReadingMaker.makeReading;
+import static com.geeksaint.traffix.maker.SignalMaker.makeReading;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

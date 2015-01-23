@@ -4,15 +4,15 @@ public enum Lane {
   ENTRY("A"),
   EXIT("B");
 
-  private String readingPrefix;
+  private String signalPrefix;
 
   Lane(String prefix) {
-    readingPrefix = prefix;
+    signalPrefix = prefix;
   }
 
   public static Lane of(String token) {
     for (Lane lane : values()) {
-      if (token.startsWith(lane.readingPrefix)) return lane;
+      if (token.startsWith(lane.signalPrefix)) return lane;
     }
     return null;
   }
