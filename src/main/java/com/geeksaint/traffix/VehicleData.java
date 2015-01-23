@@ -24,15 +24,11 @@ public class VehicleData {
   }
 
   public static VehicleData record(List<Signal> signals) {
-    Date timeAtHoseA = frontAxleHoseATime(signals);
+    Date timeAtHoseA = signals.get(0).getTime();
     return new VehicleData(timeAtHoseA, laneOf(signals));
   }
 
   private static Lane laneOf(List<Signal> signals) {
     return signals.size() == 2 ? ENTRY : EXIT;
-  }
-
-  private static Date frontAxleHoseATime(List<Signal> signals) {
-    return signals.get(0).getTime();
   }
 }

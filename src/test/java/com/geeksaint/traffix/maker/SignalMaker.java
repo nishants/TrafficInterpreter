@@ -32,9 +32,6 @@ public class SignalMaker {
   private static Date addToDate(Date observedOn, long timeInMillis) {
     return new Date(observedOn.getTime() + timeInMillis);
   }
-
-  public static Signal hoseASignal = make(a(SIGNAL));
-  public static Signal hoseBSignal = make(a(SIGNAL, with(lane, EXIT)));
 }
 
 
