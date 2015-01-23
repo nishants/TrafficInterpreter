@@ -15,9 +15,9 @@ public class ReadingTest {
   @Test
   public void shouldMakeAReading() {
     Reading pointAReading = of(new Date(0l), ENTRY);
-    assertThat(pointAReading.isHoseA(), is(true));
+    assertThat(pointAReading.isEntryLane(), is(true));
 
     Reading pointBReading = of(new Date(0l), EXIT);
-    assertThat(pointBReading.isHoseA(), is(false));
+    assertThat(pointBReading.isEntryLane(), is(false));
   }
 }

@@ -25,7 +25,7 @@ public class Reading {
     return new Reading(recordedAt, goingNorth);
   }
 
-  public boolean isHoseA() {
+  public boolean isEntryLane() {
     return lane.equals(ENTRY);
   }
 }

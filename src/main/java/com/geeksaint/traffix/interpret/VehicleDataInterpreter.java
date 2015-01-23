@@ -1,19 +1,19 @@
 package com.geeksaint.traffix.interpret;
 
+import com.geeksaint.traffix.Reading;
 import com.geeksaint.traffix.VehicleData;
-import com.geeksaint.traffix.interpret.state.InitialState;
 import com.geeksaint.traffix.source.DataSource;
 
 import java.util.Iterator;
 
+import static java.util.Arrays.asList;
+
 public class VehicleDataInterpreter implements Iterator<VehicleData> {
 
   private final DataSource dataSource;
-  private InterpreterState state;
 
   public VehicleDataInterpreter(DataSource dataSource) {
     this.dataSource = dataSource;
-    state = InitialState.create();
   }
 
   @Override
@@ -23,11 +23,14 @@ public class VehicleDataInterpreter implements Iterator<VehicleData> {
 
   @Override
   public VehicleData next() {
-    do {
-      state = state.input(dataSource.getNext());
-    } while (!state.hasOutput() && hasNext());
-
-    return state.getOutput();
+    Reading firstReading = dataSource.getNext();
+    Reading secondReading = dataSource.getNext();
+    if(secondReading.isEntryLane()){
+      return VehicleData.record(asList(firstReading, secondReading));
+    }
+    Reading thirdReading = dataSource.getNext();
+    Reading fourthReading = dataSource.getNext();
+    return VehicleData.record(asList(firstReading, secondReading, thirdReading, fourthReading));
   }
 
   @Override
