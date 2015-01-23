@@ -16,10 +16,10 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class FileDataSourceTest {
+public class SignalInterpreterTest {
     @Test
     public void shouldReadFile() {
-        FileDataSource dataSource = new FileDataSource(1970, 1, 1, fileAsStream("/data/test_data_reader.txt"));
+        SignalInterpreter dataSource = new SignalInterpreter(1970, 1, 1, fileAsStream("/data/test_data_reader.txt"));
         List<Signal> readList = new ArrayList<Signal>();
         while (dataSource.hasNext()) {
             readList.add(dataSource.getNext());

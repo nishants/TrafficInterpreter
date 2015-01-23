@@ -2,7 +2,7 @@ package com.geeksaint.traffix.interpret;
 
 import com.geeksaint.traffix.Signal;
 import com.geeksaint.traffix.VehicleData;
-import com.geeksaint.traffix.source.DataSource;
+import com.geeksaint.traffix.source.SignalInterpreter;
 
 import java.util.Iterator;
 
@@ -10,26 +10,26 @@ import static java.util.Arrays.asList;
 
 public class VehicleDataInterpreter implements Iterator<VehicleData> {
 
-  private final DataSource dataSource;
+  private final SignalInterpreter signalInterpreter;
 
-  public VehicleDataInterpreter(DataSource dataSource) {
-    this.dataSource = dataSource;
+  public VehicleDataInterpreter(SignalInterpreter signalInterpreter) {
+    this.signalInterpreter = signalInterpreter;
   }
 
   @Override
   public boolean hasNext() {
-    return dataSource.hasNext();
+    return signalInterpreter.hasNext();
   }
 
   @Override
   public VehicleData next() {
-    Signal firstSignal = dataSource.getNext();
-    Signal secondSignal = dataSource.getNext();
+    Signal firstSignal = signalInterpreter.getNext();
+    Signal secondSignal = signalInterpreter.getNext();
     if(secondSignal.isEntryLane()){
       return VehicleData.record(asList(firstSignal, secondSignal));
     }
-    Signal thirdSignal = dataSource.getNext();
-    Signal fourthSignal = dataSource.getNext();
+    Signal thirdSignal = signalInterpreter.getNext();
+    Signal fourthSignal = signalInterpreter.getNext();
     return VehicleData.record(asList(firstSignal, secondSignal, thirdSignal, fourthSignal));
   }
 

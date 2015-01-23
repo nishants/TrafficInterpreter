@@ -11,23 +11,20 @@ import static com.geeksaint.traffix.util.DateSupport.addDaysTo;
 import static com.geeksaint.traffix.util.DateSupport.toDateOfYear;
 import static java.lang.Long.*;
 
-//Represent a reading source backed by a file
-public class FileDataSource implements DataSource {
+public class SignalInterpreter {
   private final Scanner scanner;
   private Date currentDayOfRecording;
   private long lastRecordingTime;
 
-  public FileDataSource(int day, int month, int year, InputStream inputStream) {
+  public SignalInterpreter(int day, int month, int year, InputStream inputStream) {
     currentDayOfRecording = toDateOfYear(day, month, year);
     scanner = new Scanner(inputStream);
   }
 
-  @Override
   public boolean hasNext() {
     return scanner.hasNext();
   }
 
-  @Override
   public Signal getNext() {
     return toReading(scanner.next());
   }
