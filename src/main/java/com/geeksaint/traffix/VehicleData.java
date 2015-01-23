@@ -23,16 +23,16 @@ public class VehicleData {
     this.isEntering = (lane == ENTRY);
   }
 
-  public static VehicleData record(List<Reading> readings) {
-    Date timeAtHoseA = frontAxleHoseATime(readings);
-    return new VehicleData(timeAtHoseA, laneOf(readings));
+  public static VehicleData record(List<Signal> signals) {
+    Date timeAtHoseA = frontAxleHoseATime(signals);
+    return new VehicleData(timeAtHoseA, laneOf(signals));
   }
 
-  private static Lane laneOf(List<Reading> readings) {
-    return readings.size() == 2 ? ENTRY : EXIT;
+  private static Lane laneOf(List<Signal> signals) {
+    return signals.size() == 2 ? ENTRY : EXIT;
   }
 
-  private static Date frontAxleHoseATime(List<Reading> readings) {
-    return readings.get(0).getTime();
+  private static Date frontAxleHoseATime(List<Signal> signals) {
+    return signals.get(0).getTime();
   }
 }

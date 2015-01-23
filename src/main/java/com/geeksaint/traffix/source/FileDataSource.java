@@ -1,7 +1,7 @@
 package com.geeksaint.traffix.source;
 
 import com.geeksaint.traffix.Lane;
-import com.geeksaint.traffix.Reading;
+import com.geeksaint.traffix.Signal;
 
 import java.io.InputStream;
 import java.util.Date;
@@ -28,14 +28,14 @@ public class FileDataSource implements DataSource {
   }
 
   @Override
-  public Reading getNext() {
+  public Signal getNext() {
     return toReading(scanner.next());
   }
 
   // Converts the time part of Strings like "A1242" or "B3848" to time,
   // combining with the start date.
-  private Reading toReading(String token) {
-    return Reading.of(
+  private Signal toReading(String token) {
+    return Signal.of(
         currentDateOf(token),
         Lane.of(token)
     );

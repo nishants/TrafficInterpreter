@@ -1,6 +1,6 @@
 package com.geeksaint.traffix.source;
 
-import com.geeksaint.traffix.Reading;
+import com.geeksaint.traffix.Signal;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -20,13 +20,13 @@ public class FileDataSourceTest {
     @Test
     public void shouldReadFile() {
         FileDataSource dataSource = new FileDataSource(1970, 1, 1, fileAsStream("/data/test_data_reader.txt"));
-        List<Reading> readList = new ArrayList<Reading>();
+        List<Signal> readList = new ArrayList<Signal>();
         while (dataSource.hasNext()) {
             readList.add(dataSource.getNext());
         }
 
         Date recordingDate = toDate(1970, 1, 1);
-        List<Reading> expectedList = asList(
+        List<Signal> expectedList = asList(
                 makeReading(recordingDate, 268981l, ENTRY),
                 makeReading(recordingDate, 269123l, ENTRY),
 

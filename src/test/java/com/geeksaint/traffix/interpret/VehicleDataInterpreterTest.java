@@ -1,6 +1,6 @@
 package com.geeksaint.traffix.interpret;
 
-import com.geeksaint.traffix.Reading;
+import com.geeksaint.traffix.Signal;
 import com.geeksaint.traffix.VehicleData;
 import com.geeksaint.traffix.source.DataSource;
 import org.junit.Test;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertThat;
 public class VehicleDataInterpreterTest {
   @Test
   public void takesReadingsFromSourceAndReturnsVehicle() {
-    List<Reading> readingList = asList(
+    List<Signal> signalList = asList(
         makeReading((new Date()), 268581l, ENTRY),
         makeReading((new Date()), 268681l, ENTRY),
         makeReading((new Date()), 268781l, ENTRY),
@@ -31,12 +31,12 @@ public class VehicleDataInterpreterTest {
         makeReading((new Date()), 268581l, ENTRY),
         makeReading((new Date()), 268581l, ENTRY)
     );
-    DataSource dataSource = mockedFor(readingList);
+    DataSource dataSource = mockedFor(signalList);
 
-    VehicleData expectedOne = VehicleData.record(readingList.subList(0, 2));
-    VehicleData expectedTwo = VehicleData.record(readingList.subList(2, 4));
-    VehicleData expectedThree = VehicleData.record(readingList.subList(4, 8));
-    VehicleData expectedFour = VehicleData.record(readingList.subList(8, 10));
+    VehicleData expectedOne = VehicleData.record(signalList.subList(0, 2));
+    VehicleData expectedTwo = VehicleData.record(signalList.subList(2, 4));
+    VehicleData expectedThree = VehicleData.record(signalList.subList(4, 8));
+    VehicleData expectedFour = VehicleData.record(signalList.subList(8, 10));
 
     VehicleDataInterpreter interpreter = new VehicleDataInterpreter(dataSource);
 
@@ -47,15 +47,15 @@ public class VehicleDataInterpreterTest {
     assertThat(interpreter.next(), is(expectedFour));
   }
 
-  private DataSource mockedFor(List<Reading> readingList) {
-    final Iterator<Reading> iterator = readingList.iterator();
+  private DataSource mockedFor(List<Signal> signalList) {
+    final Iterator<Signal> iterator = signalList.iterator();
     DataSource dataSource = new DataSource() {
       @Override
       public boolean hasNext() {
         return iterator.hasNext();
       }
       @Override
-      public Reading getNext() {
+      public Signal getNext() {
         return iterator.next();
       }
     };

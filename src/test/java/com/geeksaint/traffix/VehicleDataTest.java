@@ -16,15 +16,15 @@ import static org.junit.Assert.assertThat;
 public class VehicleDataTest {
   @Test
   public void shouldSetSpeedForLaneAVehicles() {
-    Reading frontAxleHoseAReading = make(a(ReadingMaker.Reading,
+    Signal frontAxleHoseASignal = make(a(ReadingMaker.Reading,
         with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(1000l))));
 
-    Reading backAxleHoseAReading = make(a(ReadingMaker.Reading,
+    Signal backAxleHoseASignal = make(a(ReadingMaker.Reading,
         with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(2000l))));
 
-    VehicleData vehicleData = VehicleData.record(asList(frontAxleHoseAReading, backAxleHoseAReading));
+    VehicleData vehicleData = VehicleData.record(asList(frontAxleHoseASignal, backAxleHoseASignal));
 
     assertThat(vehicleData.isEntering(), is(true));
     assertThat(vehicleData.isEntering(), is(true));
@@ -32,26 +32,26 @@ public class VehicleDataTest {
 
   @Test
   public void shouldSetSpeedForLaneBVehicles() {
-    Reading frontAxleHoseAReading = make(a(ReadingMaker.Reading,
+    Signal frontAxleHoseASignal = make(a(ReadingMaker.Reading,
         with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(1000l))));
-    Reading frontAxleHoseBReading = make(a(ReadingMaker.Reading,
+    Signal frontAxleHoseBSignal = make(a(ReadingMaker.Reading,
         with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(1003l))));
 
-    Reading backAxleHoseAReading = make(a(ReadingMaker.Reading,
+    Signal backAxleHoseASignal = make(a(ReadingMaker.Reading,
         with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(2005l))));
 
-    Reading backAxleHoseBReading = make(a(ReadingMaker.Reading,
+    Signal backAxleHoseBSignal = make(a(ReadingMaker.Reading,
         with(ReadingMaker.lane, ENTRY),
         with(ReadingMaker.time, toDate(2013l))));
 
     VehicleData vehicleData = VehicleData.record(asList(
-        frontAxleHoseAReading,
-        frontAxleHoseBReading,
-        backAxleHoseAReading,
-        backAxleHoseBReading
+        frontAxleHoseASignal,
+        frontAxleHoseBSignal,
+        backAxleHoseASignal,
+        backAxleHoseBSignal
     ));
 
     assertThat(vehicleData.isEntering(), is(false));

@@ -1,6 +1,6 @@
 package com.geeksaint.traffix.interpret;
 
-import com.geeksaint.traffix.Reading;
+import com.geeksaint.traffix.Signal;
 import com.geeksaint.traffix.VehicleData;
 import com.geeksaint.traffix.source.DataSource;
 
@@ -23,14 +23,14 @@ public class VehicleDataInterpreter implements Iterator<VehicleData> {
 
   @Override
   public VehicleData next() {
-    Reading firstReading = dataSource.getNext();
-    Reading secondReading = dataSource.getNext();
-    if(secondReading.isEntryLane()){
-      return VehicleData.record(asList(firstReading, secondReading));
+    Signal firstSignal = dataSource.getNext();
+    Signal secondSignal = dataSource.getNext();
+    if(secondSignal.isEntryLane()){
+      return VehicleData.record(asList(firstSignal, secondSignal));
     }
-    Reading thirdReading = dataSource.getNext();
-    Reading fourthReading = dataSource.getNext();
-    return VehicleData.record(asList(firstReading, secondReading, thirdReading, fourthReading));
+    Signal thirdSignal = dataSource.getNext();
+    Signal fourthSignal = dataSource.getNext();
+    return VehicleData.record(asList(firstSignal, secondSignal, thirdSignal, fourthSignal));
   }
 
   @Override
