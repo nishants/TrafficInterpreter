@@ -26,12 +26,12 @@ public class SignalInterpreter {
   }
 
   public Signal getNext() {
-    return toReading(scanner.next());
+    return parse(scanner.next());
   }
 
   // Converts the time part of Strings like "A1242" or "B3848" to time,
   // combining with the start date.
-  private Signal toReading(String token) {
+  private Signal parse(String token) {
     return Signal.of(
         currentDateOf(token),
         Lane.of(token)

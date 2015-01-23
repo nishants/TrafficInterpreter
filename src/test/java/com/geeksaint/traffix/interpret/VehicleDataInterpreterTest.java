@@ -11,25 +11,25 @@ import java.util.List;
 
 import static com.geeksaint.traffix.Lane.ENTRY;
 import static com.geeksaint.traffix.Lane.EXIT;
-import static com.geeksaint.traffix.maker.SignalMaker.makeReading;
+import static com.geeksaint.traffix.maker.SignalMaker.makeSignal;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class VehicleDataInterpreterTest {
   @Test
-  public void takesReadingsFromSourceAndReturnsVehicle() {
+  public void parsesSignalsToVehicleData() {
     List<Signal> signalList = asList(
-        makeReading((new Date()), 268581l, ENTRY),
-        makeReading((new Date()), 268681l, ENTRY),
-        makeReading((new Date()), 268781l, ENTRY),
-        makeReading((new Date()), 268581l, ENTRY),
-        makeReading((new Date()), 268581l, ENTRY),
-        makeReading((new Date()), 268581l, EXIT),
-        makeReading((new Date()), 268581l, ENTRY),
-        makeReading((new Date()), 268581l, EXIT),
-        makeReading((new Date()), 268581l, ENTRY),
-        makeReading((new Date()), 268581l, ENTRY)
+        makeSignal((new Date()), 268581l, ENTRY),
+        makeSignal((new Date()), 268681l, ENTRY),
+        makeSignal((new Date()), 268781l, ENTRY),
+        makeSignal((new Date()), 268581l, ENTRY),
+        makeSignal((new Date()), 268581l, ENTRY),
+        makeSignal((new Date()), 268581l, EXIT),
+        makeSignal((new Date()), 268581l, ENTRY),
+        makeSignal((new Date()), 268581l, EXIT),
+        makeSignal((new Date()), 268581l, ENTRY),
+        makeSignal((new Date()), 268581l, ENTRY)
     );
     SignalInterpreter signalInterpreter = mockedFor(signalList);
 

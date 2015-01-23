@@ -16,11 +16,11 @@ import static org.junit.Assert.assertThat;
 public class VehicleDataTest {
   @Test
   public void shouldSetSpeedForLaneAVehicles() {
-    Signal frontAxleHoseASignal = make(a(SignalMaker.Reading,
+    Signal frontAxleHoseASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(1000l))));
 
-    Signal backAxleHoseASignal = make(a(SignalMaker.Reading,
+    Signal backAxleHoseASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2000l))));
 
@@ -32,18 +32,18 @@ public class VehicleDataTest {
 
   @Test
   public void shouldSetSpeedForLaneBVehicles() {
-    Signal frontAxleHoseASignal = make(a(SignalMaker.Reading,
+    Signal frontAxleHoseASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(1000l))));
-    Signal frontAxleHoseBSignal = make(a(SignalMaker.Reading,
+    Signal frontAxleHoseBSignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(1003l))));
 
-    Signal backAxleHoseASignal = make(a(SignalMaker.Reading,
+    Signal backAxleHoseASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2005l))));
 
-    Signal backAxleHoseBSignal = make(a(SignalMaker.Reading,
+    Signal backAxleHoseBSignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(2013l))));
 

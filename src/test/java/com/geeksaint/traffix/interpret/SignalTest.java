@@ -13,11 +13,11 @@ import static org.junit.Assert.assertThat;
 public class SignalTest {
 
   @Test
-  public void shouldMakeAReading() {
-    Signal pointASignal = of(new Date(0l), ENTRY);
-    assertThat(pointASignal.isEntryLane(), is(true));
+  public void shouldMakeASignal() {
+    Signal sensorASignal = of(new Date(0l), ENTRY);
+    assertThat(sensorASignal.isEntryLane(), is(true));
 
-    Signal pointBSignal = of(new Date(0l), EXIT);
-    assertThat(pointBSignal.isEntryLane(), is(false));
+    Signal sensorBSignal = of(new Date(0l), EXIT);
+    assertThat(sensorBSignal.isEntryLane(), is(false));
   }
 }

@@ -17,7 +17,7 @@ public class SignalMaker {
   public static final Property<Signal, Date> time = new Property<Signal, Date>();
   public static final Property<Signal, Lane> lane = new Property<Signal, Lane>();
 
-  public static final Instantiator<Signal> Reading = new Instantiator<Signal>() {
+  public static final Instantiator<Signal> SIGNAL = new Instantiator<Signal>() {
     public Signal instantiate(PropertyLookup<Signal> lookup) {
       Date recordedAt = lookup.valueOf(time, new Date(0l));
       Lane goingNorth = lookup.valueOf(lane, ENTRY);
@@ -25,16 +25,16 @@ public class SignalMaker {
     }
   };
 
-  public static Signal makeReading(Date observedOn, long timeInMillis, Lane lane){
-    return make(a(Reading, with(SignalMaker.lane, lane), with(time, addToDate(observedOn, timeInMillis))));
+  public static Signal makeSignal(Date observedOn, long timeInMillis, Lane lane){
+    return make(a(SIGNAL, with(SignalMaker.lane, lane), with(time, addToDate(observedOn, timeInMillis))));
   }
 
   private static Date addToDate(Date observedOn, long timeInMillis) {
     return new Date(observedOn.getTime() + timeInMillis);
   }
 
-  public static Signal hoseASignal = make(a(Reading));
-  public static Signal hoseBSignal = make(a(Reading, with(lane, EXIT)));
+  public static Signal hoseASignal = make(a(SIGNAL));
+  public static Signal hoseBSignal = make(a(SIGNAL, with(lane, EXIT)));
 }
 
 
