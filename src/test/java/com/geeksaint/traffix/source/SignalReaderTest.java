@@ -1,8 +1,10 @@
 package com.geeksaint.traffix.source;
 
 import com.geeksaint.traffix.Signal;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,12 +19,32 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class SignalReaderTest {
+
+  private InputStream fileAsStream;
+
+  @Before
+  public void setup(){
+    this.fileAsStream = new ByteArrayInputStream((
+        String.format("A268981%n" +
+        "A269123%n" +
+        "A604957%n"+
+        "B604960%n"+
+        "A605128%n"+
+        "B605132%n"+
+        "A1089807%n"+
+        "B1089810%n"+
+        "A1089948%n"+
+        "B1089951%n"+
+        "A100%n" +
+        "A20")).getBytes());
+  }
+
     @Test
     public void shouldReadFile() {
         SignalReader dataSource =
             new SignalReader(
                 new Date(0),
-              fileAsStream("/data/test_data_reader.txt"));
+                fileAsStream);
 
         List<Signal> readList = new ArrayList<Signal>();
         while (dataSource.hasNext()) {
@@ -58,9 +80,5 @@ public class SignalReaderTest {
         calendar.setTimeInMillis(date.getTime());
         calendar.add(Calendar.DAY_OF_MONTH, 1);
         return calendar.getTime();
-    }
-
-    private InputStream fileAsStream(String fileName) {
-        return getClass().getResourceAsStream(fileName);
     }
 }
