@@ -1,6 +1,7 @@
 package com.geeksaint.traffix.util;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.Calendar;
@@ -8,6 +9,7 @@ import java.util.Date;
 
 import static java.util.Calendar.DAY_OF_MONTH;
 
+@EqualsAndHashCode
 @AllArgsConstructor
 @Getter
 public class SDate {

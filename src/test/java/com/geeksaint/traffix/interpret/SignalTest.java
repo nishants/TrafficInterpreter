@@ -19,4 +19,11 @@ public class SignalTest {
     Signal sensorBSignal = of(new SDate(0), EXIT);
     assertThat(sensorBSignal.isEntryLane(), is(false));
   }
+
+  @Test
+  public void shouldEqualToSignalWithSameTimeAndLane() {
+    Signal o = of(new SDate(0), EXIT);
+    Signal b = of(new SDate(0), EXIT);
+    assertThat(o, is(b));
+  }
 }

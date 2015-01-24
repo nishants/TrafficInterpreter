@@ -5,8 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.Date;
-
 import static com.geeksaint.traffix.Lane.*;
 
 @Getter
@@ -22,8 +20,8 @@ public class Signal {
     this.lane = lane;
   }
 
-  public Date getTime(){
-    return time.getTime();
+  public SDate getTime(){
+    return time;
   }
 
   public static Signal of(SDate recordedAt, Lane lane) {
