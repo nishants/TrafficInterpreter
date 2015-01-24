@@ -15,23 +15,19 @@ import static com.natpryce.makeiteasy.MakeItEasy.make;
 import static com.natpryce.makeiteasy.MakeItEasy.with;
 
 public class SignalMaker {
-  public static final Property<Signal, Date> time = new Property<Signal, Date>();
+  public static final Property<Signal, SDate> time = new Property<Signal, SDate>();
   public static final Property<Signal, Lane> lane = new Property<Signal, Lane>();
 
   public static final Instantiator<Signal> SIGNAL = new Instantiator<Signal>() {
     public Signal instantiate(PropertyLookup<Signal> lookup) {
-      Date recordedAt = lookup.valueOf(time, new Date(0l));
+      SDate recordedAt = lookup.valueOf(time, new SDate(0l));
       Lane goingNorth = lookup.valueOf(lane, ENTRY);
-      return Signal.of(new SDate(recordedAt), goingNorth);
+      return Signal.of(recordedAt, goingNorth);
     }
   };
 
   public static Signal makeSignal(Date observedOn, long timeInMillis, Lane lane){
-    return make(a(SIGNAL, with(SignalMaker.lane, lane), with(time, addToDate(observedOn, timeInMillis))));
-  }
-
-  public static Date addToDate(Date observedOn, long timeInMillis) {
-    return new Date(observedOn.getTime() + timeInMillis);
+    return make(a(SIGNAL, with(SignalMaker.lane, lane), with(time, new SDate(observedOn).addTime(timeInMillis))));
   }
 }
 

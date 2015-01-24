@@ -1,9 +1,8 @@
 package com.geeksaint.traffix;
 
 import com.geeksaint.traffix.maker.SignalMaker;
+import com.geeksaint.traffix.util.SDate;
 import org.junit.Test;
-
-import java.util.Date;
 
 import static com.geeksaint.traffix.Lane.*;
 import static com.natpryce.makeiteasy.MakeItEasy.a;
@@ -58,7 +57,7 @@ public class VehicleTest {
     assertThat(vehicle.isEntering(), is(false));
   }
 
-  private Date toDate(long time) {
-    return new Date(time);
+  private SDate toDate(long time) {
+    return new SDate(time);
   }
 }
