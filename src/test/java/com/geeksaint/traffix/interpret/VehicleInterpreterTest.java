@@ -8,13 +8,15 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import static com.geeksaint.traffix.Lane.ENTRY;
 import static com.geeksaint.traffix.Lane.EXIT;
-import static com.geeksaint.traffix.maker.SignalMaker.makeSignal;
+import static com.geeksaint.traffix.maker.SignalMaker.*;
+import static com.natpryce.makeiteasy.MakeItEasy.a;
+import static com.natpryce.makeiteasy.MakeItEasy.make;
+import static com.natpryce.makeiteasy.MakeItEasy.with;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -23,17 +25,46 @@ public class VehicleInterpreterTest {
   @Test
   public void parsesSignalsToVehicleData() {
     List<Signal> signalList = asList(
-        makeSignal((new Date()), 268581l, ENTRY),
-        makeSignal((new Date()), 268681l, ENTRY),
-        makeSignal((new Date()), 268781l, ENTRY),
-        makeSignal((new Date()), 268581l, ENTRY),
-        makeSignal((new Date()), 268581l, ENTRY),
-        makeSignal((new Date()), 268581l, EXIT),
-        makeSignal((new Date()), 268581l, ENTRY),
-        makeSignal((new Date()), 268581l, EXIT),
-        makeSignal((new Date()), 268581l, ENTRY),
-        makeSignal((new Date()), 268581l, ENTRY)
-    );
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, EXIT),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, EXIT),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l)))),
+
+        make(a(SIGNAL,
+            with(lane, ENTRY),
+            with(time, new SDate(268581l))))
+        );
     SignalReader signalReader = mockedFor(signalList);
 
     Vehicle expectedOne = Vehicle.parse(signalList.subList(0, 2));
