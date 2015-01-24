@@ -2,20 +2,19 @@ package com.geeksaint.traffix.source;
 
 import com.geeksaint.traffix.Lane;
 import com.geeksaint.traffix.Signal;
+import com.geeksaint.traffix.util.SDate;
 
 import java.io.InputStream;
-import java.util.Date;
 import java.util.Scanner;
 
-import static com.geeksaint.traffix.util.DateSupport.addDaysTo;
 import static java.lang.Long.*;
 
 public class SignalReader {
   private final Scanner scanner;
-  private Date currentDayOfRecording;
+  private SDate currentDayOfRecording;
   private long lastRecordingTime;
 
-  public SignalReader(Date date, InputStream inputStream) {
+  public SignalReader(SDate date, InputStream inputStream) {
     currentDayOfRecording = date;
     scanner = new Scanner(inputStream);
   }
@@ -37,13 +36,13 @@ public class SignalReader {
     );
   }
 
-  private Date currentDateOf(String token) {
+  private SDate currentDateOf(String token) {
     long time = parseLong(token.substring(1));
     if (lastRecordingTime > time) {
-      currentDayOfRecording = addDaysTo(currentDayOfRecording, 1);
+      currentDayOfRecording = currentDayOfRecording.addOneDay();
     }
     lastRecordingTime = time;
-    return new Date(currentDayOfRecording.getTime() + time);
+    return currentDayOfRecording.addTime(time);
   }
 
 }
