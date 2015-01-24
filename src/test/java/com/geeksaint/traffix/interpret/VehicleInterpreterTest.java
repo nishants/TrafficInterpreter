@@ -3,6 +3,7 @@ package com.geeksaint.traffix.interpret;
 import com.geeksaint.traffix.Signal;
 import com.geeksaint.traffix.Vehicle;
 import com.geeksaint.traffix.source.SignalReader;
+import com.geeksaint.traffix.util.SDate;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class VehicleInterpreterTest {
   private SignalReader mockedFor(List<Signal> signalList) {
     final Iterator<Signal> iterator = signalList.iterator();
     //A (technically) mocked signal interpreter
-    return new SignalReader(new Date(), new InputStream() {
+    return new SignalReader(new SDate(0), new InputStream() {
       @Override
       public int read() throws IOException {
         return 0;

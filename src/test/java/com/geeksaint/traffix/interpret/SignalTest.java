@@ -1,9 +1,8 @@
 package com.geeksaint.traffix.interpret;
 
 import com.geeksaint.traffix.Signal;
+import com.geeksaint.traffix.util.SDate;
 import org.junit.Test;
-
-import java.util.Date;
 
 import static com.geeksaint.traffix.Lane.*;
 import static com.geeksaint.traffix.Signal.*;
@@ -14,10 +13,10 @@ public class SignalTest {
 
   @Test
   public void shouldMakeASignal() {
-    Signal sensorASignal = of(new Date(0l), ENTRY);
+    Signal sensorASignal = of(new SDate(0l), ENTRY);
     assertThat(sensorASignal.isEntryLane(), is(true));
 
-    Signal sensorBSignal = of(new Date(0l), EXIT);
+    Signal sensorBSignal = of(new SDate(0), EXIT);
     assertThat(sensorBSignal.isEntryLane(), is(false));
   }
 }

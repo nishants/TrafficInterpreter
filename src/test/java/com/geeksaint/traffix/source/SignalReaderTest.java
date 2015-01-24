@@ -1,6 +1,7 @@
 package com.geeksaint.traffix.source;
 
 import com.geeksaint.traffix.Signal;
+import com.geeksaint.traffix.util.SDate;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,7 +44,7 @@ public class SignalReaderTest {
     public void shouldReadFile() {
         SignalReader dataSource =
             new SignalReader(
-                new Date(0),
+                new SDate(new Date(0)),
                 fileAsStream);
 
         List<Signal> readList = new ArrayList<Signal>();
