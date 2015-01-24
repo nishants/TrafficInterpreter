@@ -4,29 +4,21 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.Calendar;
-
-import static java.util.Calendar.DAY_OF_MONTH;
-
 @EqualsAndHashCode
 @Getter
 @ToString
 public class Date {
-  private java.util.Date time;
+  private long time;
 
   public Date(long timeInMillis) {
-    this.time = new java.util.Date(timeInMillis);
+    this.time = timeInMillis;
   }
 
   public Date addOneDay() {
-    Calendar calendar = Calendar.getInstance();
-    calendar.setTimeInMillis(time.getTime());
-    calendar.add(DAY_OF_MONTH, 1);
-    java.util.Date nextDay = calendar.getTime();
-    return new Date(nextDay.getTime());
+    return new Date(time + 24*60*60*1000);
   }
 
   public Date addMillis(long milliSecs) {
-    return new Date(time.getTime() + milliSecs);
+    return new Date(time + milliSecs);
   }
 }
