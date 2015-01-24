@@ -21,8 +21,8 @@ public class SignalTest {
 
   @Test
   public void shouldEqualToSignalWithSameTimeAndLane() {
-    Signal o = of(new Date(0), EXIT);
-    Signal b = of(new Date(0), EXIT);
-    assertThat(o, is(b));
+    Signal one = of(new Date(0), EXIT);
+    Signal another = of(new Date(0), EXIT);
+    assertThat(one, is(another));
   }
 }

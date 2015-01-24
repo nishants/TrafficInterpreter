@@ -1,13 +1,9 @@
 package com.geeksaint.traffix;
 
-import com.geeksaint.traffix.maker.SignalMaker;
 import com.geeksaint.traffix.util.Date;
 import org.junit.Test;
 
 import static com.geeksaint.traffix.Lane.*;
-import static com.natpryce.makeiteasy.MakeItEasy.a;
-import static com.natpryce.makeiteasy.MakeItEasy.make;
-import static com.natpryce.makeiteasy.MakeItEasy.with;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -16,13 +12,8 @@ public class VehicleTest {
   @Test
   public void shouldCreateLaneAVehicles() {
     Date timeAtSensorA = toDate(1000l);
-    Signal frontAxleSensorASignal = make(a(SignalMaker.SIGNAL,
-        with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, timeAtSensorA)));
-
-    Signal backAxleSensorASignal = make(a(SignalMaker.SIGNAL,
-        with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, new Date(2000l))));
+    Signal frontAxleSensorASignal = new Signal(timeAtSensorA, ENTRY);
+    Signal backAxleSensorASignal = new Signal(toDate(2000l), ENTRY);
 
     Vehicle vehicle = Vehicle.parse(asList(frontAxleSensorASignal, backAxleSensorASignal));
 
@@ -33,20 +24,10 @@ public class VehicleTest {
   @Test
   public void shouldCreateLaneBVehicles() {
     Date timeAtSensorA = new Date(1000l);
-    Signal frontAxleSignalASignal = make(a(SignalMaker.SIGNAL,
-        with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, timeAtSensorA)));
-    Signal frontAxleSignalBSignal = make(a(SignalMaker.SIGNAL,
-        with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, toDate(1003l))));
-
-    Signal backAxleSignalASignal = make(a(SignalMaker.SIGNAL,
-        with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, toDate(2005l))));
-
-    Signal backAxleSignalBSignal = make(a(SignalMaker.SIGNAL,
-        with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, toDate(2013l))));
+    Signal frontAxleSignalASignal = new Signal(timeAtSensorA, ENTRY);
+    Signal frontAxleSignalBSignal = new Signal(toDate(1003l), ENTRY);
+    Signal backAxleSignalASignal = new Signal(toDate(2005l), ENTRY);
+    Signal backAxleSignalBSignal = new Signal(toDate(2013l), ENTRY);
 
     Vehicle vehicle = Vehicle.parse(asList(
         frontAxleSignalASignal,

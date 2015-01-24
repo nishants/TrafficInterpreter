@@ -38,7 +38,7 @@ public class DateTest {
 
   private java.util.Date toDate(int year, int month, int day) {
     Calendar calendar = Calendar.getInstance();
-    calendar.set(year, month, day);
+    calendar.set(year, month, day, 0, 0);
     return calendar.getTime();
   }
 

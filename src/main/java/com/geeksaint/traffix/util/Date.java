@@ -8,7 +8,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Date {
-  private long time;
+  private final long time;
 
   public Date(long timeInMillis) {
     this.time = timeInMillis;

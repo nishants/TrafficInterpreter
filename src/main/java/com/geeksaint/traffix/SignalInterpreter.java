@@ -6,9 +6,9 @@ import static java.util.Arrays.asList;
 
 public class SignalInterpreter implements Iterator<Vehicle> {
 
-  private final SignalReader signalReader;
+  private final Iterator<Signal> signalReader;
 
-  public SignalInterpreter(SignalReader signalReader) {
+  public SignalInterpreter(Iterator<Signal> signalReader) {
     this.signalReader = signalReader;
   }
 

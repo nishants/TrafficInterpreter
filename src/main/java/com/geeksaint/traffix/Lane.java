@@ -1,5 +1,6 @@
 package com.geeksaint.traffix;
 
+//Represents the Exit and Entrance lanes
 public enum Lane {
   ENTRY("A"),
   EXIT("B");

@@ -11,12 +11,6 @@ import java.util.List;
 
 import static com.geeksaint.traffix.Lane.ENTRY;
 import static com.geeksaint.traffix.Lane.EXIT;
-import static com.geeksaint.traffix.maker.SignalMaker.*;
-import static com.geeksaint.traffix.maker.SignalMaker.SIGNAL;
-import static com.geeksaint.traffix.maker.SignalMaker.time;
-import static com.natpryce.makeiteasy.MakeItEasy.a;
-import static com.natpryce.makeiteasy.MakeItEasy.make;
-import static com.natpryce.makeiteasy.MakeItEasy.with;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -45,54 +39,21 @@ public class SignalReaderTest {
     recordingDate = new Date(0l);
 
     expectedList = asList(
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addMillis(268981l)))),
+        new Signal(recordingDate.addMillis(268981l), ENTRY),
+        new Signal(recordingDate.addMillis(269123l), ENTRY),
 
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addMillis(269123l)))),
+        new Signal(recordingDate.addMillis(604957l), ENTRY),
+        new Signal(recordingDate.addMillis(604960l), EXIT),
+        new Signal(recordingDate.addMillis(605128l), ENTRY),
+        new Signal(recordingDate.addMillis(605132l), EXIT),
 
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addMillis(604957l)))),
+        new Signal(recordingDate.addMillis(1089807l), ENTRY),
+        new Signal(recordingDate.addMillis(1089810l), EXIT),
+        new Signal(recordingDate.addMillis(1089948l), ENTRY),
+        new Signal(recordingDate.addMillis(1089951l), EXIT),
 
-        make(a(SIGNAL,
-            with(lane, EXIT),
-            with(time, recordingDate.addMillis(604960l)))),
-
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addMillis(605128l)))),
-
-        make(a(SIGNAL,
-            with(lane, EXIT),
-            with(time, recordingDate.addMillis(605132l)))),
-
-
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addMillis(1089807l)))),
-
-        make(a(SIGNAL,
-            with(lane, EXIT),
-            with(time, recordingDate.addMillis(1089810l)))),
-
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addMillis(1089948l)))),
-
-        make(a(SIGNAL,
-            with(lane, EXIT),
-            with(time, recordingDate.addMillis(1089951l)))),
-
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addOneDay().addMillis(100)))),
-
-        make(a(SIGNAL,
-            with(lane, ENTRY),
-            with(time, recordingDate.addOneDay().addOneDay().addMillis(20))))
+        new Signal(recordingDate.addOneDay().addMillis(100), ENTRY),
+        new Signal(recordingDate.addOneDay().addOneDay().addMillis(20), ENTRY)
     );
   }
 
