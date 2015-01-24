@@ -2,6 +2,7 @@ package com.geeksaint.traffix.util;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.Calendar;
 
@@ -9,6 +10,7 @@ import static java.util.Calendar.DAY_OF_MONTH;
 
 @EqualsAndHashCode
 @Getter
+@ToString
 public class Date {
   private java.util.Date time;
 
@@ -24,7 +26,7 @@ public class Date {
     return new Date(nextDay.getTime());
   }
 
-  public Date addMillis(long millisToAdd) {
-    return new Date(time.getTime() + millisToAdd);
+  public Date addMillis(long milliSecs) {
+    return new Date(time.getTime() + milliSecs);
   }
 }
