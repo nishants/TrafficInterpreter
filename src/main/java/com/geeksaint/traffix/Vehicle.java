@@ -1,6 +1,6 @@
 package com.geeksaint.traffix;
 
-import com.geeksaint.traffix.util.SDate;
+import com.geeksaint.traffix.util.Date;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -13,18 +13,18 @@ import static com.geeksaint.traffix.Lane.*;
 @ToString
 public class Vehicle {
   @Getter
-  private final SDate timeObserved;
+  private final Date timeObserved;
 
   @Getter
   private final boolean isEntering;
 
-  public Vehicle(SDate timeObserved, Lane lane) {
+  public Vehicle(Date timeObserved, Lane lane) {
     this.timeObserved = timeObserved;
     this.isEntering = (lane == ENTRY);
   }
 
   public static Vehicle parse(List<Signal> signals) {
-    SDate timeObserved = signals.get(0).getTime();
+    Date timeObserved = signals.get(0).getTime();
     return new Vehicle(timeObserved, laneOf(signals));
   }
 

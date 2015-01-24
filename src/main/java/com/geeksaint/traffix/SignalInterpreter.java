@@ -1,8 +1,4 @@
-package com.geeksaint.traffix.interpret;
-
-import com.geeksaint.traffix.Signal;
-import com.geeksaint.traffix.Vehicle;
-import com.geeksaint.traffix.source.SignalReader;
+package com.geeksaint.traffix;
 
 import java.util.Iterator;
 
@@ -23,13 +19,13 @@ public class SignalInterpreter implements Iterator<Vehicle> {
 
   @Override
   public Vehicle next() {
-    Signal firstSignal = signalReader.getNext();
-    Signal secondSignal = signalReader.getNext();
+    Signal firstSignal = signalReader.next();
+    Signal secondSignal = signalReader.next();
     if(secondSignal.isEntryLane()){
       return Vehicle.parse(asList(firstSignal, secondSignal));
     }
-    Signal thirdSignal = signalReader.getNext();
-    Signal fourthSignal = signalReader.getNext();
+    Signal thirdSignal = signalReader.next();
+    Signal fourthSignal = signalReader.next();
     return Vehicle.parse(asList(firstSignal, secondSignal, thirdSignal, fourthSignal));
   }
 

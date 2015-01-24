@@ -1,10 +1,11 @@
 package com.geeksaint.traffix.interpret;
 
 import com.geeksaint.traffix.Signal;
+import com.geeksaint.traffix.SignalInterpreter;
 import com.geeksaint.traffix.Vehicle;
 import com.geeksaint.traffix.maker.SignalReaderMaker;
-import com.geeksaint.traffix.source.SignalReader;
-import com.geeksaint.traffix.util.SDate;
+import com.geeksaint.traffix.SignalReader;
+import com.geeksaint.traffix.util.Date;
 import org.junit.Test;
 
 import java.util.List;
@@ -19,49 +20,49 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class VehicleInterpreterTest {
+public class SignalInterpreterTest {
   @Test
   public void parsesSignalsToVehicleData() {
     List<Signal> signalList = asList(
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, EXIT),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, EXIT),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l)))),
+            with(time, new Date(268581l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, new SDate(268581l))))
+            with(time, new Date(268581l))))
         );
     SignalReader signalReader = make(a(SignalReaderMaker.SIGNAL,
         with(SignalReaderMaker.signals, signalList)));

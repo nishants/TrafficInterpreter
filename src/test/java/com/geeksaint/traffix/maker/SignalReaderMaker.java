@@ -1,8 +1,8 @@
 package com.geeksaint.traffix.maker;
 
 import com.geeksaint.traffix.Signal;
-import com.geeksaint.traffix.source.SignalReader;
-import com.geeksaint.traffix.util.SDate;
+import com.geeksaint.traffix.SignalReader;
+import com.geeksaint.traffix.util.Date;
 import com.natpryce.makeiteasy.Instantiator;
 import com.natpryce.makeiteasy.Property;
 import com.natpryce.makeiteasy.PropertyLookup;
@@ -21,7 +21,7 @@ public class SignalReaderMaker {
       List<Signal> signalsList = lookup.valueOf(signals, new ArrayList<Signal>());
       final Iterator<Signal> iterator = signalsList.iterator();
       //A (technically) mocked signal interpreter
-      return new SignalReader(new SDate(0), new InputStream() {
+      return new SignalReader(new Date(0), new InputStream() {
         @Override
         public int read() throws IOException {
           return 0;
@@ -32,7 +32,7 @@ public class SignalReaderMaker {
           return iterator.hasNext();
         }
         @Override
-        public Signal getNext() {
+        public Signal next() {
           return iterator.next();
         }
       };
