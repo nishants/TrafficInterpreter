@@ -8,13 +8,17 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import static com.geeksaint.traffix.Lane.ENTRY;
 import static com.geeksaint.traffix.Lane.EXIT;
-import static com.geeksaint.traffix.maker.SignalMaker.makeSignal;
+import static com.geeksaint.traffix.maker.SignalMaker.*;
+import static com.geeksaint.traffix.maker.SignalMaker.SIGNAL;
+import static com.geeksaint.traffix.maker.SignalMaker.time;
+import static com.natpryce.makeiteasy.MakeItEasy.a;
+import static com.natpryce.makeiteasy.MakeItEasy.make;
+import static com.natpryce.makeiteasy.MakeItEasy.with;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -52,34 +56,58 @@ public class SignalReaderTest {
             readList.add(dataSource.getNext());
         }
 
-        Date recordingDate = new Date(0);
+        SDate recordingDate = new SDate(0);
         List<Signal> expectedList = asList(
-                makeSignal(recordingDate, 268981l, ENTRY),
-                makeSignal(recordingDate, 269123l, ENTRY),
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addTime(268981l)))),
 
-                makeSignal(recordingDate, 604957l, ENTRY),
-                makeSignal(recordingDate, 604960l, EXIT),
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addTime(269123l)))),
 
-                makeSignal(recordingDate, 605128l, ENTRY),
-                makeSignal(recordingDate, 605132l, EXIT),
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addTime(604957l)))),
 
-                makeSignal(recordingDate, 1089807l, ENTRY),
-                makeSignal(recordingDate, 1089810l, EXIT),
+            make(a(SIGNAL,
+                with(lane, EXIT),
+                with(time, recordingDate.addTime(604960l)))),
 
-                makeSignal(recordingDate, 1089948l, ENTRY),
-                makeSignal(recordingDate, 1089951l, EXIT),
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addTime(605128l)))),
 
-                makeSignal(increment(recordingDate), 100, ENTRY),
-                makeSignal(increment(increment(recordingDate)), 20, ENTRY)
+            make(a(SIGNAL,
+                with(lane, EXIT),
+                with(time, recordingDate.addTime(605132l)))),
+
+
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addTime(1089807l)))),
+
+            make(a(SIGNAL,
+                with(lane, EXIT),
+                with(time, recordingDate.addTime(1089810l)))),
+
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addTime(1089948l)))),
+
+            make(a(SIGNAL,
+                with(lane, EXIT),
+                with(time, recordingDate.addTime(1089951l)))),
+
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addOneDay().addTime(100)))),
+
+            make(a(SIGNAL,
+                with(lane, ENTRY),
+                with(time, recordingDate.addOneDay().addOneDay().addTime(20))))
         );
 
         assertThat(readList, is(expectedList));
-    }
-
-    private Date increment(Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(date.getTime());
-        calendar.add(Calendar.DAY_OF_MONTH, 1);
-        return calendar.getTime();
     }
 }

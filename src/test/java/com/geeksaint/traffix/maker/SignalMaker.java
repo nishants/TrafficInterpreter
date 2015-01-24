@@ -7,12 +7,7 @@ import com.natpryce.makeiteasy.Instantiator;
 import com.natpryce.makeiteasy.Property;
 import com.natpryce.makeiteasy.PropertyLookup;
 
-import java.util.Date;
-
 import static com.geeksaint.traffix.Lane.*;
-import static com.natpryce.makeiteasy.MakeItEasy.a;
-import static com.natpryce.makeiteasy.MakeItEasy.make;
-import static com.natpryce.makeiteasy.MakeItEasy.with;
 
 public class SignalMaker {
   public static final Property<Signal, SDate> time = new Property<Signal, SDate>();
@@ -26,9 +21,6 @@ public class SignalMaker {
     }
   };
 
-  public static Signal makeSignal(Date observedOn, long timeInMillis, Lane lane){
-    return make(a(SIGNAL, with(SignalMaker.lane, lane), with(time, new SDate(observedOn).addTime(timeInMillis))));
-  }
 }
 
 
