@@ -18,12 +18,10 @@ public class SignalReader implements Iterator<Signal> {
     scanner = new Scanner(inputStream);
   }
 
-  @Override
   public boolean hasNext() {
     return scanner.hasNext();
   }
 
-  @Override
   public Signal next() {
     String token = scanner.next();
 
@@ -42,7 +40,6 @@ public class SignalReader implements Iterator<Signal> {
     return currentDayOfRecording.addMillis(time);
   }
 
-  @Override
   public void remove() {
     throw new UnsupportedOperationException();
   }

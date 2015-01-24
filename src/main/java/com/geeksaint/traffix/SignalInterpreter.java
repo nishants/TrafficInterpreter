@@ -12,12 +12,10 @@ public class SignalInterpreter implements Iterator<Vehicle> {
     this.signalReader = signalReader;
   }
 
-  @Override
   public boolean hasNext() {
     return signalReader.hasNext();
   }
 
-  @Override
   public Vehicle next() {
     Signal firstSignal = signalReader.next();
     Signal secondSignal = signalReader.next();
@@ -29,7 +27,6 @@ public class SignalInterpreter implements Iterator<Vehicle> {
     return Vehicle.parse(asList(firstSignal, secondSignal, thirdSignal, fourthSignal));
   }
 
-  @Override
   public void remove() {
     throw new UnsupportedOperationException();
   }

@@ -20,10 +20,6 @@ public class Signal {
     this.lane = lane;
   }
 
-  public Date getTime(){
-    return time;
-  }
-
   public static Signal of(Date recordedAt, Lane lane) {
     return new Signal(recordedAt, lane);
   }
