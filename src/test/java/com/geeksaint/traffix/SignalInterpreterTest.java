@@ -1,10 +1,6 @@
-package com.geeksaint.traffix.interpret;
+package com.geeksaint.traffix;
 
-import com.geeksaint.traffix.Signal;
-import com.geeksaint.traffix.SignalInterpreter;
-import com.geeksaint.traffix.Vehicle;
 import com.geeksaint.traffix.maker.SignalReaderMaker;
-import com.geeksaint.traffix.SignalReader;
 import com.geeksaint.traffix.util.Date;
 import org.junit.Test;
 

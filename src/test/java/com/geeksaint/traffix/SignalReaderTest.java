@@ -1,7 +1,5 @@
-package com.geeksaint.traffix.source;
+package com.geeksaint.traffix;
 
-import com.geeksaint.traffix.Signal;
-import com.geeksaint.traffix.SignalReader;
 import com.geeksaint.traffix.util.Date;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +22,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class SignalReaderTest {
-
   private InputStream fileAsStream;
   private List<Signal> expectedList;
   private Date recordingDate;
@@ -50,52 +47,52 @@ public class SignalReaderTest {
     expectedList = asList(
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addTime(268981l)))),
+            with(time, recordingDate.addMillis(268981l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addTime(269123l)))),
+            with(time, recordingDate.addMillis(269123l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addTime(604957l)))),
+            with(time, recordingDate.addMillis(604957l)))),
 
         make(a(SIGNAL,
             with(lane, EXIT),
-            with(time, recordingDate.addTime(604960l)))),
+            with(time, recordingDate.addMillis(604960l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addTime(605128l)))),
+            with(time, recordingDate.addMillis(605128l)))),
 
         make(a(SIGNAL,
             with(lane, EXIT),
-            with(time, recordingDate.addTime(605132l)))),
+            with(time, recordingDate.addMillis(605132l)))),
 
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addTime(1089807l)))),
+            with(time, recordingDate.addMillis(1089807l)))),
 
         make(a(SIGNAL,
             with(lane, EXIT),
-            with(time, recordingDate.addTime(1089810l)))),
+            with(time, recordingDate.addMillis(1089810l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addTime(1089948l)))),
+            with(time, recordingDate.addMillis(1089948l)))),
 
         make(a(SIGNAL,
             with(lane, EXIT),
-            with(time, recordingDate.addTime(1089951l)))),
+            with(time, recordingDate.addMillis(1089951l)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addOneDay().addTime(100)))),
+            with(time, recordingDate.addOneDay().addMillis(100)))),
 
         make(a(SIGNAL,
             with(lane, ENTRY),
-            with(time, recordingDate.addOneDay().addOneDay().addTime(20))))
+            with(time, recordingDate.addOneDay().addOneDay().addMillis(20))))
     );
   }
 

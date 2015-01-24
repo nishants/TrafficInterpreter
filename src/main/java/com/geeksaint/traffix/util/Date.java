@@ -24,7 +24,7 @@ public class Date {
     return new Date(nextDay.getTime());
   }
 
-  public Date addTime(long millisToAdd) {
+  public Date addMillis(long millisToAdd) {
     return new Date(time.getTime() + millisToAdd);
   }
 }

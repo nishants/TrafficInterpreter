@@ -14,26 +14,28 @@ import static org.junit.Assert.assertThat;
 
 public class VehicleTest {
   @Test
-  public void shouldSetSpeedForLaneAVehicles() {
+  public void shouldCreateLaneAVehicles() {
+    Date timeAtSensorA = toDate(1000l);
     Signal frontAxleSensorASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, toDate(1000l))));
+        with(SignalMaker.time, timeAtSensorA)));
 
     Signal backAxleSensorASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, toDate(2000l))));
+        with(SignalMaker.time, new Date(2000l))));
 
     Vehicle vehicle = Vehicle.parse(asList(frontAxleSensorASignal, backAxleSensorASignal));
 
     assertThat(vehicle.isEntering(), is(true));
-    assertThat(vehicle.isEntering(), is(true));
+    assertThat(vehicle.getTimeObserved(), is(timeAtSensorA));
   }
 
   @Test
-  public void shouldSetSpeedForLaneBVehicles() {
+  public void shouldCreateLaneBVehicles() {
+    Date timeAtSensorA = new Date(1000l);
     Signal frontAxleSignalASignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
-        with(SignalMaker.time, toDate(1000l))));
+        with(SignalMaker.time, timeAtSensorA)));
     Signal frontAxleSignalBSignal = make(a(SignalMaker.SIGNAL,
         with(SignalMaker.lane, ENTRY),
         with(SignalMaker.time, toDate(1003l))));
@@ -53,7 +55,7 @@ public class VehicleTest {
         backAxleSignalBSignal
     ));
 
-    assertThat(vehicle.isEntering(), is(false));
+    assertThat(vehicle.getTimeObserved(), is(timeAtSensorA));
     assertThat(vehicle.isEntering(), is(false));
   }
 

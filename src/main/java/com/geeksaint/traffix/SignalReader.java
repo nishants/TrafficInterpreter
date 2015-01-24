@@ -39,7 +39,7 @@ public class SignalReader implements Iterator<Signal> {
       currentDayOfRecording = currentDayOfRecording.addOneDay();
     }
     lastRecordingTime = time;
-    return currentDayOfRecording.addTime(time);
+    return currentDayOfRecording.addMillis(time);
   }
 
   @Override
