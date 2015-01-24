@@ -8,7 +8,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 import static com.geeksaint.traffix.util.DateSupport.addDaysTo;
-import static com.geeksaint.traffix.util.DateSupport.toDateOfYear;
 import static java.lang.Long.*;
 
 public class SignalReader {
@@ -16,8 +15,8 @@ public class SignalReader {
   private Date currentDayOfRecording;
   private long lastRecordingTime;
 
-  public SignalReader(int day, int month, int year, InputStream inputStream) {
-    currentDayOfRecording = toDateOfYear(day, month, year);
+  public SignalReader(Date date, InputStream inputStream) {
+    currentDayOfRecording = date;
     scanner = new Scanner(inputStream);
   }
 

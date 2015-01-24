@@ -19,13 +19,17 @@ import static org.junit.Assert.assertThat;
 public class SignalReaderTest {
     @Test
     public void shouldReadFile() {
-        SignalReader dataSource = new SignalReader(1970, 1, 1, fileAsStream("/data/test_data_reader.txt"));
+        SignalReader dataSource =
+            new SignalReader(
+                new Date(0),
+              fileAsStream("/data/test_data_reader.txt"));
+
         List<Signal> readList = new ArrayList<Signal>();
         while (dataSource.hasNext()) {
             readList.add(dataSource.getNext());
         }
 
-        Date recordingDate = toDate(1970, 1, 1);
+        Date recordingDate = new Date(0);
         List<Signal> expectedList = asList(
                 makeSignal(recordingDate, 268981l, ENTRY),
                 makeSignal(recordingDate, 269123l, ENTRY),
@@ -47,18 +51,6 @@ public class SignalReaderTest {
         );
 
         assertThat(readList, is(expectedList));
-    }
-
-    private Date toDate(int day, int month, int year) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.MILLISECOND, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month);
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-        return calendar.getTime();
     }
 
     private Date increment(Date date) {

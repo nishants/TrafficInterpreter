@@ -52,7 +52,7 @@ public class VehicleInterpreterTest {
   private SignalReader mockedFor(List<Signal> signalList) {
     final Iterator<Signal> iterator = signalList.iterator();
     //A (technically) mocked signal interpreter
-    return new SignalReader(1,1,1, new InputStream() {
+    return new SignalReader(new Date(), new InputStream() {
       @Override
       public int read() throws IOException {
         return 0;
